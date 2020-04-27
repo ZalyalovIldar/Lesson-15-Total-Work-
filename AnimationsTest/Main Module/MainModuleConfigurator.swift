@@ -32,6 +32,8 @@ class MainModuleConfigurator {
         interactor.realmManager = realmManager
         interactor.networkManager = networkManager
         
+        dataSource.presenter = presenter
+        
         router.view = view
         router.presenter = presenter
         

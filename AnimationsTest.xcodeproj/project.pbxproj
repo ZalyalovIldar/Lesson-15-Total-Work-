@@ -16,6 +16,8 @@
 		737A11A92455D6AE00AE7CF8 /* MainModuleConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737A11A82455D6AE00AE7CF8 /* MainModuleConfigurator.swift */; };
 		737A11AB2455D70400AE7CF8 /* MainRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737A11AA2455D70400AE7CF8 /* MainRouter.swift */; };
 		737A11AD2455DF4B00AE7CF8 /* MainRouterOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737A11AC2455DF4B00AE7CF8 /* MainRouterOutput.swift */; };
+		737A11B22456E75B00AE7CF8 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737A11B12456E75B00AE7CF8 /* DetailView.swift */; };
+		737A11B42457107400AE7CF8 /* MainDataSourceOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737A11B32457107400AE7CF8 /* MainDataSourceOutput.swift */; };
 		7386B3682455852900EA20B8 /* Hero.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7386B3672455852900EA20B8 /* Hero.swift */; };
 		7386B36A2455855800EA20B8 /* HeroDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7386B3692455855800EA20B8 /* HeroDto.swift */; };
 		7386B36D245585BD00EA20B8 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7386B36C245585BD00EA20B8 /* Extensions.swift */; };
@@ -64,6 +66,8 @@
 		737A11A82455D6AE00AE7CF8 /* MainModuleConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModuleConfigurator.swift; sourceTree = "<group>"; };
 		737A11AA2455D70400AE7CF8 /* MainRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRouter.swift; sourceTree = "<group>"; };
 		737A11AC2455DF4B00AE7CF8 /* MainRouterOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRouterOutput.swift; sourceTree = "<group>"; };
+		737A11B12456E75B00AE7CF8 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		737A11B32457107400AE7CF8 /* MainDataSourceOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDataSourceOutput.swift; sourceTree = "<group>"; };
 		7386B3672455852900EA20B8 /* Hero.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hero.swift; sourceTree = "<group>"; };
 		7386B3692455855800EA20B8 /* HeroDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroDto.swift; sourceTree = "<group>"; };
 		7386B36C245585BD00EA20B8 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -130,6 +134,14 @@
 				737A11A42455C5E800AE7CF8 /* MainView.swift */,
 			);
 			path = "Main View";
+			sourceTree = "<group>";
+		};
+		737A11AE2456E63700AE7CF8 /* Detail View */ = {
+			isa = PBXGroup;
+			children = (
+				737A11B12456E75B00AE7CF8 /* DetailView.swift */,
+			);
+			path = "Detail View";
 			sourceTree = "<group>";
 		};
 		7386B3662455851700EA20B8 /* Entity */ = {
@@ -218,6 +230,7 @@
 		73C5F074245594A80026BB95 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				737A11AE2456E63700AE7CF8 /* Detail View */,
 				737A11A32455C5CB00AE7CF8 /* Main View */,
 				737A11A22455C5C600AE7CF8 /* Cell */,
 				73C5F0812455B9A90026BB95 /* MainViewInput.swift */,
@@ -260,6 +273,7 @@
 			children = (
 				73C5F0832455BA6B0026BB95 /* MainDataSourceInput.swift */,
 				737A11982455BBCB00AE7CF8 /* MainDataSource.swift */,
+				737A11B32457107400AE7CF8 /* MainDataSourceOutput.swift */,
 			);
 			path = "Data Source";
 			sourceTree = "<group>";
@@ -516,6 +530,7 @@
 				7386B36A2455855800EA20B8 /* HeroDto.swift in Sources */,
 				73C5F0842455BA6B0026BB95 /* MainDataSourceInput.swift in Sources */,
 				7386B374245586BD00EA20B8 /* NetworkManagerImpl.swift in Sources */,
+				737A11B22456E75B00AE7CF8 /* DetailView.swift in Sources */,
 				73C5F0802455B9640026BB95 /* MainPresenter.swift in Sources */,
 				73C5F0822455B9A90026BB95 /* MainViewInput.swift in Sources */,
 				73C5F07E245595770026BB95 /* MainInteractorOutput.swift in Sources */,
@@ -525,6 +540,7 @@
 				7386B37A2455876A00EA20B8 /* HeroModel.swift in Sources */,
 				737A11AD2455DF4B00AE7CF8 /* MainRouterOutput.swift in Sources */,
 				73C5F07324558C450026BB95 /* RealmManagerImpl.swift in Sources */,
+				737A11B42457107400AE7CF8 /* MainDataSourceOutput.swift in Sources */,
 				737A11992455BBCB00AE7CF8 /* MainDataSource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

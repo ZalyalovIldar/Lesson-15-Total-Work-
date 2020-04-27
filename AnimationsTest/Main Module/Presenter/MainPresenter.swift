@@ -8,7 +8,7 @@
 
 import Foundation
 
-class MainPresenter: MainInteractorOutput, MainViewOutput, MainRouterOutput {
+class MainPresenter: MainInteractorOutput, MainViewOutput, MainRouterOutput, MainDataSourceOutput {
     
     var interactor: MainInteractorInput!
     var dataSource: MainDataSourceInput!
@@ -54,5 +54,10 @@ class MainPresenter: MainInteractorOutput, MainViewOutput, MainRouterOutput {
     //MARK: - Router Output
     func userDidEnterNewName(for indexPath: IndexPath, name: String) {
         interactor.renameRequested(on: dataSource.heroes[indexPath.row].id, new: name)
+    }
+    
+    //MARK: - Data Source Output
+    func didLoadImage(data: Data, id: Int) {
+        interactor.saveImage(data: data, id: id)
     }
 }

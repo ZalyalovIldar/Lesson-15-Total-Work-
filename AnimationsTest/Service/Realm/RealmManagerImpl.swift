@@ -40,7 +40,9 @@ class RealmManagerImpl: RealmManager {
             
             let objects = Array(realm.objects(HeroModel.self).sorted(byKeyPath: #keyPath(HeroModel.id), ascending: true)).map({ $0.toDto() })
             
-            completion(objects)
+            DispatchQueue.main.async {
+                completion(objects)
+            }
         }
     }
     
@@ -54,11 +56,14 @@ class RealmManagerImpl: RealmManager {
             
             guard let objectUnwrapped = object else {
                 
-                completion(.none)
+                DispatchQueue.main.async {
+                    completion(.none)
+                }
                 return
             }
-            
-            completion(objectUnwrapped.toDto())
+            DispatchQueue.main.async {
+                completion(objectUnwrapped.toDto())
+            }
         }
     }
     
@@ -104,11 +109,7 @@ class RealmManagerImpl: RealmManager {
             
             for model in models {
                 
-                guard let imageUrl = URL(string: model.image), let imageData = try? Data(contentsOf: imageUrl) else { continue }
-                
                 let realmModel = model.toRealmModel()
-                realmModel.imageData = imageData
-                
                 objects.append(realmModel)
             }
             
@@ -117,7 +118,9 @@ class RealmManagerImpl: RealmManager {
                 realm.add(objects)
             }
             
-            completion()
+            DispatchQueue.main.async {
+                completion()
+            }
         }
     }
     
@@ -133,6 +136,22 @@ class RealmManagerImpl: RealmManager {
                 
                 objectToRename.name = name
                 realm.add(objectToRename, update: .modified)
+            }
+        }
+    }
+    
+    func saveImage(imageData: Data, primaryKey: Int) {
+        
+        DispatchQueue.global(qos: .userInteractive).async {
+            
+            let realm = try! Realm()
+            
+            guard let objectToSaveData = realm.object(ofType: HeroModel.self, forPrimaryKey: primaryKey) else { return }
+            
+            try? realm.write {
+                
+                objectToSaveData.imageData = imageData
+                realm.add(objectToSaveData, update: .modified)
             }
         }
     }

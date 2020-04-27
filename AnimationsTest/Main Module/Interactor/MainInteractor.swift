@@ -14,6 +14,7 @@ class MainInteractor: MainInteractorInput {
     var realmManager: RealmManager!
     var networkManager: NetworkManager!
     
+    //MARK: - Interactor Input
     func fetchAllHeroes() {
         
         // firstly, ask for a cached copy of data
@@ -62,7 +63,23 @@ class MainInteractor: MainInteractorInput {
         }
     }
     
-    func startObservingRealm() {
+    func saveImage(data: Data, id: Int) {
+        
+        realmManager.saveImage(imageData: data, primaryKey: id)
+    }
+    
+    func renameRequested(on id: Int, new name: String) {
+        
+        realmManager.renameObject(with: id, new: name)
+    }
+    
+    func deleteRequested(on id: Int) {
+        
+        realmManager.delete(by: id)
+    }
+    
+    //MARK: - Util
+    private func startObservingRealm() {
         
         realmManager.observe { [weak self] deletions, insertions, modifications in
             
@@ -75,15 +92,5 @@ class MainInteractor: MainInteractorInput {
                 }
             }
         }
-    }
-    
-    func renameRequested(on id: Int, new name: String) {
-        
-        realmManager.renameObject(with: id, new: name)
-    }
-    
-    func deleteRequested(on id: Int) {
-        
-        realmManager.delete(by: id)
     }
 }

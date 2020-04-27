@@ -39,4 +39,6 @@ protocol RealmManager {
     ///   - primaryKey: primary key of the object
     ///   - name: new name
     func renameObject(with primaryKey: Int, new name: String)
+    
+    func saveImage(imageData: Data, primaryKey: Int)
 }

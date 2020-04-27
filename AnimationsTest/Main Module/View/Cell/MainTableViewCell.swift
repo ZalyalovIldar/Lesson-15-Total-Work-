@@ -9,6 +9,15 @@
 import UIKit
 import SDWebImage
 
+protocol MainTableViewCellDelegate: AnyObject {
+    
+    /// tells delegate that SDWebImage has loaded an image
+    /// - Parameters:
+    ///   - data: image
+    ///   - id: dto id
+    func didLoadImage(data: Data, id: Int)
+}
+
 class MainTableViewCell: UITableViewCell {
     
     //MARK: - Appearance Constants
@@ -35,6 +44,7 @@ class MainTableViewCell: UITableViewCell {
     }
     
     var dto: HeroDto!
+    weak var delegate: MainTableViewCellDelegate?
     
     //MARK: - Views
     lazy var heroImageView: UIImageView = {
@@ -86,7 +96,9 @@ class MainTableViewCell: UITableViewCell {
     }
     
     //MARK: - Setup
-    func configure(with dto: HeroDto) {
+    func configure(with dto: HeroDto, delegate: MainTableViewCellDelegate?) {
+        
+        self.delegate = delegate
         
         nameLabel.text = dto.name
         homeworldLabel.text = dto.homeworld
@@ -96,9 +108,27 @@ class MainTableViewCell: UITableViewCell {
             heroImageView.image = UIImage(data: imageData)?.resizeTopAlignedToFill(newWidth: Appearance.imageViewWidth)
         }
         else {
-            heroImageView.sd_setImage(with: URL(string: dto.image))
+            heroImageView.sd_setImage(with: URL(string: dto.image)) { [weak self] image, _, _, _ in
+                
+                guard let self = self else { return }
+                
+                DispatchQueue.main.async {
+                    
+                    self.heroImageView.image = image?.resizeTopAlignedToFill(newWidth: self.heroImageView.frame.width)
+                    
+                    if let data = self.heroImageView.image?.pngData() {
+                        delegate!.didLoadImage(data: data, id: dto.id)
+                    }
+                }
+            }
             heroImageView.image = heroImageView.image?.resizeTopAlignedToFill(newWidth: Appearance.imageViewWidth)
         }
+    }
+    
+    override func prepareForReuse() {
+        
+        super.prepareForReuse()
+        heroImageView.sd_cancelCurrentImageLoad()
     }
     
     func setupConstraints() {

@@ -22,4 +22,10 @@ protocol MainInteractorInput: AnyObject {
     /// tells interactor that user wants to delete hero with given id
     /// - Parameter id: id of the hero to delete
     func deleteRequested(on id: Int)
+    
+    /// tells interactor to save image data
+    /// - Parameters:
+    ///   - data: image data
+    ///   - id: id of the object to save image in
+    func saveImage(data: Data, id: Int)
 }
