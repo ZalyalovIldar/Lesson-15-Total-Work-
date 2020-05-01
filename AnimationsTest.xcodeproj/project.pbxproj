@@ -25,6 +25,7 @@
 		7386B372245586AC00EA20B8 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7386B371245586AC00EA20B8 /* NetworkManager.swift */; };
 		7386B374245586BD00EA20B8 /* NetworkManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7386B373245586BD00EA20B8 /* NetworkManagerImpl.swift */; };
 		7386B37A2455876A00EA20B8 /* HeroModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7386B3792455876A00EA20B8 /* HeroModel.swift */; };
+		739964F5245AF6D00097201B /* PanDirectionGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739964F4245AF6D00097201B /* PanDirectionGestureRecognizer.swift */; };
 		73C5F07124558B0B0026BB95 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C5F07024558B0B0026BB95 /* RealmManager.swift */; };
 		73C5F07324558C450026BB95 /* RealmManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C5F07224558C450026BB95 /* RealmManagerImpl.swift */; };
 		73C5F07A245595000026BB95 /* MainInteractorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C5F079245595000026BB95 /* MainInteractorInput.swift */; };
@@ -75,6 +76,7 @@
 		7386B371245586AC00EA20B8 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		7386B373245586BD00EA20B8 /* NetworkManagerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerImpl.swift; sourceTree = "<group>"; };
 		7386B3792455876A00EA20B8 /* HeroModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroModel.swift; sourceTree = "<group>"; };
+		739964F4245AF6D00097201B /* PanDirectionGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanDirectionGestureRecognizer.swift; sourceTree = "<group>"; };
 		73C5F07024558B0B0026BB95 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		73C5F07224558C450026BB95 /* RealmManagerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManagerImpl.swift; sourceTree = "<group>"; };
 		73C5F079245595000026BB95 /* MainInteractorInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInteractorInput.swift; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 			children = (
 				7386B36C245585BD00EA20B8 /* Extensions.swift */,
 				7386B36E245585EC00EA20B8 /* Endpoints.swift */,
+				739964F4245AF6D00097201B /* PanDirectionGestureRecognizer.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -520,6 +523,7 @@
 				73C5F07A245595000026BB95 /* MainInteractorInput.swift in Sources */,
 				737A11AB2455D70400AE7CF8 /* MainRouter.swift in Sources */,
 				737A11A92455D6AE00AE7CF8 /* MainModuleConfigurator.swift in Sources */,
+				739964F5245AF6D00097201B /* PanDirectionGestureRecognizer.swift in Sources */,
 				7CBDFBD824447FB500259A8B /* AppDelegate.swift in Sources */,
 				73C5F07C245595610026BB95 /* MainInteractor.swift in Sources */,
 				7386B36F245585EC00EA20B8 /* Endpoints.swift in Sources */,

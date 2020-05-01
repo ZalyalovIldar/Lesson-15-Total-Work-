@@ -28,6 +28,25 @@ protocol MainViewInput: AnyObject {
     func reloadData(deletions: [IndexPath], insertions: [IndexPath], modifications: [IndexPath])
     
     /// register the datasource for table view
-    /// - Parameter dataSource: <#dataSource description#>
+    /// - Parameter dataSource: data source to be registered
     func registerDataSource(_ dataSource: UITableViewDataSource)
+    
+    /// tells to display detail view to its full size immediately
+    func displayDetailView(for hero: HeroDto, at indexPath: IndexPath)
+    
+    /// tells view to display detail view as card
+    /// - Parameters:
+    ///   - hero: hero model
+    ///   - indexPath: source index path
+    func displayDetailViewAsCard(for hero: HeroDto, at indexPath: IndexPath)
+    
+    /// tells view to update pan animation completion percentage
+    /// - Parameter percentage:pan animation completion percentage
+    func updatePanAnimationPercentage(with percentage: Double)
+    
+    /// tells view to finish pan animation
+    /// - Parameter percentage: completion percentage to be finished at
+    func finishPanAnimation(at percentage: Double)
+    
+    func fireHapticImpact()
 }

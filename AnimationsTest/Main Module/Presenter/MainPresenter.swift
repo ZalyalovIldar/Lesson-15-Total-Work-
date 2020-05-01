@@ -51,6 +51,24 @@ class MainPresenter: MainInteractorOutput, MainViewOutput, MainRouterOutput, Mai
         router.showRenamingAlert(initial: dataSource.heroes[indexPath.row].name, indexPath: indexPath)
     }
     
+    func didSelectRow(at indexPath: IndexPath) {
+        view.displayDetailView(for: dataSource.heroes[indexPath.row], at: indexPath)
+    }
+    
+    func didLongPressedOnCell(at indexPath: IndexPath) {
+        
+        view.displayDetailViewAsCard(for: dataSource.heroes[indexPath.row], at: indexPath)
+        view.fireHapticImpact()
+    }
+    
+    func updatePanAnimationPercentage(with percentage: Double) {
+        view.updatePanAnimationPercentage(with: percentage)
+    }
+    
+    func finishPanAnimation(at percentage: Double) {
+        view.finishPanAnimation(at: percentage)
+    }
+    
     //MARK: - Router Output
     func userDidEnterNewName(for indexPath: IndexPath, name: String) {
         interactor.renameRequested(on: dataSource.heroes[indexPath.row].id, new: name)
