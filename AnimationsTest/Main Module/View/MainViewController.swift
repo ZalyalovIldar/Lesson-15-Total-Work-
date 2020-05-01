@@ -31,8 +31,8 @@ class MainViewController: UIViewController, UITableViewDelegate, MainViewInput, 
         
         static let longPressDuration: TimeInterval = 0.5
         
-        static let panUpperDelta = 0.2
-        static let panLowerDelta = 0.8
+        static let panUpperDelta = 0.4
+        static let panLowerDelta = 0.6
         static let animationMiddlePoint = 0.5
         static let animationEndPoint = 1.0
     }
@@ -343,7 +343,16 @@ class MainViewController: UIViewController, UITableViewDelegate, MainViewInput, 
     
     @objc func handlePan(gestureRecognizer: UIPanGestureRecognizer) {
         
-        let currentPercentage = gestureRecognizer.location(in: view).y / view.frame.height
+        let currentTranslation = gestureRecognizer.translation(in: view)
+        let currentPercentage: CGFloat
+
+        if currentTranslation.y < .zero {
+            
+            currentPercentage = CGFloat(Appearance.animationMiddlePoint) - (abs(currentTranslation.y) / view.frame.height) * CGFloat(Appearance.animationMiddlePoint)
+        }
+        else {
+            currentPercentage = CGFloat(Appearance.animationMiddlePoint) + (currentTranslation.y / view.frame.height) * CGFloat(Appearance.animationMiddlePoint)
+        }
         
         switch gestureRecognizer.state {
             
