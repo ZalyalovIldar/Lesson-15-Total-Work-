@@ -40,8 +40,8 @@ class MainViewController: UIViewController, UITableViewDelegate, MainViewInput, 
     //MARK: - Animators
     var oneTapAnimator: UIViewPropertyAnimator!
     var longPressAnimator: UIViewPropertyAnimator!
-    
     var panAnimator: UIViewPropertyAnimator!
+    var bottomPanAnimator: UIViewPropertyAnimator!
     
     //MARK: - Haptic
     lazy var impact: UIImpactFeedbackGenerator = {
@@ -135,8 +135,8 @@ class MainViewController: UIViewController, UITableViewDelegate, MainViewInput, 
         
         if percentage > Appearance.animationMiddlePoint {
             
-            let normalized = (Appearance.animationEndPoint - percentage) / Appearance.animationMiddlePoint
-            longPressAnimator.fractionComplete = CGFloat(normalized)
+            let normalized = percentage - Appearance.animationMiddlePoint
+            bottomPanAnimator.fractionComplete = CGFloat(normalized)
         }
         else {
             
@@ -155,7 +155,7 @@ class MainViewController: UIViewController, UITableViewDelegate, MainViewInput, 
             panAnimator.addCompletion { [unowned self] _ in
 
                 self.detailView.mainScrollView.isScrollEnabled = true
-                self.detailView.mainScrollView.setContentOffset(.zero, animated: true)
+                self.detailView.mainScrollView.setContentOffset(CGPoint(x: .zero, y: -self.detailView.mainScrollView.adjustedContentInset.top), animated: true)
             }
             
             panAnimator.startAnimation()
@@ -163,15 +163,22 @@ class MainViewController: UIViewController, UITableViewDelegate, MainViewInput, 
         }
         else if percentage > Appearance.panLowerDelta {
             
-            longPressAnimator.pausesOnCompletion = false
-            
-            dismissDetailView()
+            bottomPanAnimator.pausesOnCompletion = false
+            bottomPanAnimator.startAnimation()
         }
         else {
             
             if percentage > Appearance.animationMiddlePoint {
                 
-                longPressAnimator.startAnimation()
+                bottomPanAnimator.pausesOnCompletion = true
+                bottomPanAnimator.isReversed = true
+                bottomPanAnimator.startAnimation()
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + Appearance.oneTapAnimationDuration) { [unowned self] in
+                    
+                    self.bottomPanAnimator.isReversed = false
+                    self.bottomPanAnimator.pausesOnCompletion = false
+                }
             }
             else {
                 
@@ -266,6 +273,17 @@ class MainViewController: UIViewController, UITableViewDelegate, MainViewInput, 
         })
         
         longPressAnimator.pausesOnCompletion = true
+        
+        bottomPanAnimator = UIViewPropertyAnimator(duration: Appearance.oneTapAnimationDuration, curve: .easeOut) { [unowned self] in
+            
+            self.detailView.frame = CGRect(x: .zero, y: self.view.frame.height, width: self.view.frame.width, height: self.detailView.frame.height)
+            self.coverView.effect = .none
+        }
+        
+        bottomPanAnimator.addCompletion { [unowned self] _ in
+            
+            self.cleanUpAnimationRelatedObjects()
+        }
 
         longPressAnimator.startAnimation()
     }
@@ -290,6 +308,24 @@ class MainViewController: UIViewController, UITableViewDelegate, MainViewInput, 
     }
     
     //MARK: - Util
+    func cleanUpAnimationRelatedObjects() {
+        
+        if let panAnimator = self.panAnimator, panAnimator.isInterruptible {
+            
+            panAnimator.stopAnimation(true)
+        }
+        
+        if let longPressAnimator = self.longPressAnimator, longPressAnimator.isInterruptible {
+            
+            longPressAnimator.stopAnimation(true)
+        }
+        
+        self.detailViewInitialFrame = .none
+        self.coverView.removeFromSuperview()
+        self.detailView.removeGestureRecognizer(self.cardPanGestureRecognizer)
+        self.detailView.removeFromSuperview()
+    }
+    
     func dismissDetailView() {
         
         if let initialFrame = detailViewInitialFrame, let _ = detailView {
@@ -303,20 +339,7 @@ class MainViewController: UIViewController, UITableViewDelegate, MainViewInput, 
             
             oneTapAnimator.addCompletion { [unowned self] _ in
                 
-                if let panAnimator = self.panAnimator, panAnimator.isInterruptible {
-                    
-                    panAnimator.stopAnimation(true)
-                }
-                
-                if let longPressAnimator = self.longPressAnimator, longPressAnimator.isInterruptible {
-                    
-                    longPressAnimator.stopAnimation(true)
-                }
-                
-                self.detailViewInitialFrame = .none
-                self.coverView.removeFromSuperview()
-                self.detailView.removeGestureRecognizer(self.cardPanGestureRecognizer)
-                self.detailView.removeFromSuperview()
+                self.cleanUpAnimationRelatedObjects()
             }
             
             oneTapAnimator.startAnimation()
