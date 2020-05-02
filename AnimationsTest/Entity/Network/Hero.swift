@@ -21,6 +21,20 @@ struct Hero: Codable {
     let skinColor: String?
     let eyeColor: String?
     
+    init(id: Int, name: String, image: String, homeworld: String?, gender: String, height: Double?, mass: Int?, species: String, skinColor: String?, eyeColor: String?) {
+        
+        self.id = id
+        self.name = name
+        self.image = image
+        self.homeworld = homeworld
+        self.gender = gender
+        self.height = height
+        self.mass = mass
+        self.species = species
+        self.skinColor = skinColor
+        self.eyeColor = eyeColor
+    }
+    
     enum CodingKeys: String, CodingKey {
         
         case id
