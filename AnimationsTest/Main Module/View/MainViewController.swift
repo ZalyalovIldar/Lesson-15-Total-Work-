@@ -68,7 +68,7 @@ class MainViewController: UIViewController, UITableViewDelegate, MainViewInput, 
     
     private var toFullScreenAnimator: (() -> UIViewPropertyAnimator)?
     private var toDismissAnimator: (() -> UIViewPropertyAnimator)?
-    private var toCardAnimator: ((Bool) -> UIViewPropertyAnimator)?
+    private var toCardAnimator: (() -> UIViewPropertyAnimator)?
     
     //MARK: - Views
     var detailView: DetailView!
@@ -193,12 +193,10 @@ class MainViewController: UIViewController, UITableViewDelegate, MainViewInput, 
             animateToFullScreen.startAnimation()
         }
         else {
-            
-            needsBlurAtRelease = animateToDismiss.fractionComplete > .zero
-            
+                        
             animateToDismiss.stopAnimation(true)
             animateToFullScreen.stopAnimation(true)
-            animateToCard = toCardAnimator?(needsBlurAtRelease)
+            animateToCard = toCardAnimator?()
             
             animateToCard.addCompletion { [unowned self] _ in
                 
@@ -298,13 +296,11 @@ class MainViewController: UIViewController, UITableViewDelegate, MainViewInput, 
         
         animateToFullScreen = toFullScreenAnimator?()
         
-        toCardAnimator = { [unowned self] needsBlur in
+        toCardAnimator = { [unowned self] in
             
             let animateToCard = UIViewPropertyAnimator(duration: Appearance.oneTapAnimationDuration, curve: .easeOut, animations: { [unowned self] in
                 
-                if needsBlur {
-                    self.coverView.alpha = Appearance.endAlpha
-                }
+                self.coverView.alpha = Appearance.endAlpha
                 self.detailView.layer.cornerRadius = Appearance.cardCornerRadius
                 self.detailView.frame = cardToFrame
                 self.detailView.alpha = Appearance.endAlpha
@@ -319,7 +315,7 @@ class MainViewController: UIViewController, UITableViewDelegate, MainViewInput, 
             return animateToCard
         }
         
-        animateToCard = toCardAnimator?(true)
+        animateToCard = toCardAnimator?()
         
         toDismissAnimator = { [unowned self] in
             
