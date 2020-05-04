@@ -45,8 +45,7 @@ protocol MainViewInput: AnyObject {
     func updatePanAnimationPercentage(with percentage: Double)
     
     /// tells view to finish pan animation
-    /// - Parameter percentage: completion percentage to be finished at
-    func finishPanAnimation(at percentage: Double)
+    func finishPanAnimation()
     
     func fireHapticImpact()
 }

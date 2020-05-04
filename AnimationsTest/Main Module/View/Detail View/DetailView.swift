@@ -127,7 +127,7 @@ class DetailView: UIView {
     
     lazy var mainScrollView: UIScrollView = {
         
-        let scrollView = UIScrollView()
+        let scrollView = GestureRecognizerCompatibleScrollView()
         
         scrollView.alwaysBounceHorizontal = false
         

@@ -31,17 +31,32 @@ class MainViewController: UIViewController, UITableViewDelegate, MainViewInput, 
         
         static let longPressDuration: TimeInterval = 0.5
         
-        static let panUpperDelta = 0.4
-        static let panLowerDelta = 0.6
+        static let completionDelta: CGFloat = 0.5
         static let animationMiddlePoint = 0.5
         static let animationEndPoint = 1.0
     }
     
     //MARK: - Animators
-    var oneTapAnimator: UIViewPropertyAnimator!
-    var longPressAnimator: UIViewPropertyAnimator!
-    var panAnimator: UIViewPropertyAnimator!
-    var bottomPanAnimator: UIViewPropertyAnimator!
+    var animateToCard: UIViewPropertyAnimator!
+    var animateToFullScreen: UIViewPropertyAnimator!
+    var animateToDismiss: UIViewPropertyAnimator!
+    
+    var currentlyDismissing = false {
+        
+        didSet {
+            
+            if currentlyDismissing {
+                
+                animateToFullScreen.stopAnimation(true)
+                animateToFullScreen = toFullScreenAnimator?()
+            }
+            else {
+                
+                animateToDismiss.stopAnimation(true)
+                animateToDismiss = toDismissAnimator?()
+            }
+        }
+    }
     
     //MARK: - Haptic
     lazy var impact: UIImpactFeedbackGenerator = {
@@ -51,20 +66,26 @@ class MainViewController: UIViewController, UITableViewDelegate, MainViewInput, 
         return impact
     }()
     
+    private var toFullScreenAnimator: (() -> UIViewPropertyAnimator)?
+    private var toDismissAnimator: (() -> UIViewPropertyAnimator)?
+    private var toCardAnimator: ((Bool) -> UIViewPropertyAnimator)?
+    
     //MARK: - Views
     var detailView: DetailView!
     var detailViewInitialFrame: CGRect?
+
     var coverView = UIVisualEffectView()
     
     var mainView = MainView()
     var presenter: MainViewOutput!
+    
+    var initialTranslation: CGFloat = .zero
     
     lazy var cellLongPressGestureRecognizer: UILongPressGestureRecognizer = {
         
         let recognizer = UILongPressGestureRecognizer()
         recognizer.addTarget(self, action: #selector(handleLongPress(gestureRecognizer:)))
         recognizer.minimumPressDuration = Appearance.longPressDuration
-        recognizer.delegate = self
         
         return recognizer
     }()
@@ -72,7 +93,13 @@ class MainViewController: UIViewController, UITableViewDelegate, MainViewInput, 
     lazy var cardPanGestureRecognizer: UIPanGestureRecognizer = {
         
         let recognizer = PanDirectionGestureRecognizer(direction: .vertical, target: self, action: #selector(handlePan(gestureRecognizer:)))
-        recognizer.delegate = self
+        
+        return recognizer
+    }()
+    
+    lazy var cardExpandGestureRecognizer: UITapGestureRecognizer = {
+        
+        let recognizer = UITapGestureRecognizer(target: self, action: #selector(handleExpand(gestureRecognizer:)))
         
         return recognizer
     }()
@@ -133,65 +160,54 @@ class MainViewController: UIViewController, UITableViewDelegate, MainViewInput, 
     
     func updatePanAnimationPercentage(with percentage: Double) {
         
-        if percentage > Appearance.animationMiddlePoint {
+        if self.detailView.mainScrollView.isScrollEnabled {
+            self.detailView.mainScrollView.isScrollEnabled.toggle()
+        }
+        
+        if percentage > .zero {
             
-            let normalized = percentage - Appearance.animationMiddlePoint
-            bottomPanAnimator.fractionComplete = CGFloat(normalized)
+            if !currentlyDismissing {
+                currentlyDismissing.toggle()
+            }
+            
+            animateToDismiss.fractionComplete = CGFloat(percentage)
         }
         else {
             
-            let normalized = Appearance.animationEndPoint - percentage / Appearance.animationMiddlePoint
-            panAnimator.fractionComplete = CGFloat(normalized)
+            if currentlyDismissing {
+                currentlyDismissing.toggle()
+            }
+            
+            animateToFullScreen.fractionComplete = abs(CGFloat(percentage))
         }
     }
     
-    func finishPanAnimation(at percentage: Double) {
+    func finishPanAnimation() {
         
-        if percentage < Appearance.panUpperDelta {
-            
-            panAnimator.pausesOnCompletion = false
-            panAnimator.isReversed = false
-            
-            panAnimator.addCompletion { [unowned self] _ in
-
-                self.detailView.mainScrollView.isScrollEnabled = true
-                self.detailView.mainScrollView.setContentOffset(CGPoint(x: .zero, y: -self.detailView.mainScrollView.adjustedContentInset.top), animated: true)
-            }
-            
-            panAnimator.startAnimation()
-            
+        var needsBlurAtRelease = false
+        
+        if animateToDismiss.fractionComplete > Appearance.completionDelta {
+            animateToDismiss.startAnimation()
         }
-        else if percentage > Appearance.panLowerDelta {
-            
-            bottomPanAnimator.pausesOnCompletion = false
-            bottomPanAnimator.startAnimation()
+        else if animateToFullScreen.fractionComplete > Appearance.completionDelta {
+            animateToFullScreen.startAnimation()
         }
         else {
             
-            if percentage > Appearance.animationMiddlePoint {
+            needsBlurAtRelease = animateToDismiss.fractionComplete > .zero
+            
+            animateToDismiss.stopAnimation(true)
+            animateToFullScreen.stopAnimation(true)
+            animateToCard = toCardAnimator?(needsBlurAtRelease)
+            
+            animateToCard.addCompletion { [unowned self] _ in
                 
-                bottomPanAnimator.pausesOnCompletion = true
-                bottomPanAnimator.isReversed = true
-                bottomPanAnimator.startAnimation()
-                
-                DispatchQueue.main.asyncAfter(deadline: .now() + Appearance.oneTapAnimationDuration) { [unowned self] in
-                    
-                    self.bottomPanAnimator.isReversed = false
-                    self.bottomPanAnimator.pausesOnCompletion = false
-                }
+                self.animateToDismiss = self.toDismissAnimator?()
+                self.animateToFullScreen = self.toFullScreenAnimator?()
+                self.detailView.mainScrollView.isScrollEnabled = false
             }
-            else {
-                
-                panAnimator.isReversed = true
-                panAnimator.pausesOnCompletion = true
-                
-                panAnimator.startAnimation()
-                
-                DispatchQueue.main.asyncAfter(deadline: .now() + Appearance.oneTapAnimationDuration) { [unowned self] in
-                    
-                    self.panAnimator.isReversed = false
-                }
-            }
+            
+            animateToCard.startAnimation()
         }
     }
     
@@ -206,86 +222,15 @@ class MainViewController: UIViewController, UITableViewDelegate, MainViewInput, 
     //MARK: - Display Immediately
     func displayDetailView(for hero: HeroDto, at indexPath: IndexPath) {
         
-        detailView = DetailView(hero: hero, delegate: self)
-        coverView.frame = mainView.frame
-        
-        mainView.addSubview(coverView)
-        mainView.addSubview(detailView)
-        detailView.setupConstraints()
-        
-        let cellFrame = mainView.tableView.rectForRow(at: indexPath).offsetBy(dx: -mainView.tableView.contentOffset.x, dy: -mainView.tableView.contentOffset.y)
-        
-        detailViewInitialFrame = cellFrame
-        detailView.frame = cellFrame
-        detailView.alpha = .zero
-        
-        detailView.layoutIfNeeded()
-        
-        let toFrame = CGRect(x: cellFrame.origin.x, y: self.view.frame.origin.y, width: cellFrame.width, height: self.view.frame.height)
-                
-        oneTapAnimator = UIViewPropertyAnimator(duration: Appearance.oneTapAnimationDuration, curve: .easeOut, animations: { [unowned self] in
-            
-            self.detailView.frame = toFrame
-            self.detailView.alpha = Appearance.endAlpha
-        })
-
-        oneTapAnimator.startAnimation()
+        prepareForAnimation(hero: hero, at: indexPath)
+        animateToFullScreen.startAnimation()
     }
     
     //MARK: - Display as card
     func displayDetailViewAsCard(for hero: HeroDto, at indexPath: IndexPath) {
         
-        detailView = DetailView(hero: hero, delegate: self)
-        detailView.addGestureRecognizer(cardPanGestureRecognizer)
-        coverView = UIVisualEffectView()
-        coverView.frame = mainView.frame
-        detailView.mainScrollView.isScrollEnabled = false
-        
-        mainView.addSubview(coverView)
-        mainView.addSubview(detailView)
-        detailView.setupConstraints()
-        
-        let cellFrame = mainView.tableView.rectForRow(at: indexPath).offsetBy(dx: -mainView.tableView.contentOffset.x, dy: -mainView.tableView.contentOffset.y)
-        
-        detailViewInitialFrame = cellFrame
-        detailView.frame = cellFrame
-        detailView.alpha = .zero
-        
-        detailView.layoutIfNeeded()
-        
-        let xTranslation = (cellFrame.width - cellFrame.width * Appearance.cardWidthMultiplier) / 2
-        let yTranslation = (view.frame.height - Appearance.cardHeight) / 2
-        let toFrame = CGRect(x: cellFrame.origin.x + xTranslation, y: self.view.frame.origin.y + yTranslation, width: cellFrame.width * Appearance.cardWidthMultiplier, height: Appearance.cardHeight)
-        
-        panAnimator = UIViewPropertyAnimator(duration: Appearance.oneTapAnimationDuration, curve: .easeOut) { [unowned self] in
-            
-            self.detailView.frame = self.view.frame
-        }
-        
-        panAnimator.pausesOnCompletion = true
-
-        longPressAnimator = UIViewPropertyAnimator(duration: Appearance.oneTapAnimationDuration, curve: .easeOut, animations: { [unowned self] in
-            
-            self.coverView.effect = UIBlurEffect(style: .light)
-            self.detailView.layer.cornerRadius = Appearance.cardCornerRadius
-            self.detailView.frame = toFrame
-            self.detailView.alpha = Appearance.endAlpha
-        })
-        
-        longPressAnimator.pausesOnCompletion = true
-        
-        bottomPanAnimator = UIViewPropertyAnimator(duration: Appearance.oneTapAnimationDuration, curve: .easeOut) { [unowned self] in
-            
-            self.detailView.frame = CGRect(x: .zero, y: self.view.frame.height, width: self.view.frame.width, height: self.detailView.frame.height)
-            self.coverView.effect = .none
-        }
-        
-        bottomPanAnimator.addCompletion { [unowned self] _ in
-            
-            self.cleanUpAnimationRelatedObjects()
-        }
-
-        longPressAnimator.startAnimation()
+        prepareForAnimation(hero: hero, at: indexPath)
+        animateToCard.startAnimation()
     }
     
     func reloadData() {
@@ -308,47 +253,124 @@ class MainViewController: UIViewController, UITableViewDelegate, MainViewInput, 
     }
     
     //MARK: - Util
-    func cleanUpAnimationRelatedObjects() {
+    func prepareForAnimation(hero: HeroDto, at indexPath: IndexPath) {
         
-        if let panAnimator = self.panAnimator, panAnimator.isInterruptible {
+        detailView = DetailView(hero: hero, delegate: self)
+        detailView.addGestureRecognizer(cardPanGestureRecognizer)
+        coverView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
+        coverView.alpha = .zero
+        coverView.frame = mainView.frame
+        detailView.mainScrollView.isScrollEnabled = false
+        
+        mainView.addSubview(coverView)
+        mainView.addSubview(detailView)
+        detailView.setupConstraints()
+        
+        let cellFrame = mainView.tableView.rectForRow(at: indexPath).offsetBy(dx: -mainView.tableView.contentOffset.x, dy: -mainView.tableView.contentOffset.y)
+        
+        detailViewInitialFrame = cellFrame
+        detailView.frame = cellFrame
+        detailView.alpha = .zero
+        
+        detailView.layoutIfNeeded()
+        
+        let xTranslation = (cellFrame.width - cellFrame.width * Appearance.cardWidthMultiplier) / 2
+        let yTranslation = (view.frame.height - Appearance.cardHeight) / 2
+        let cardToFrame = CGRect(x: cellFrame.origin.x + xTranslation, y: self.view.frame.origin.y + yTranslation, width: cellFrame.width * Appearance.cardWidthMultiplier, height: Appearance.cardHeight)
+        
+        toFullScreenAnimator = { [unowned self] in
+        
+            let animateToFullScreen = UIViewPropertyAnimator(duration: Appearance.oneTapAnimationDuration, curve: .easeOut) { [unowned self] in
+                
+                self.detailView.frame = self.view.frame
+                self.detailView.alpha = Appearance.endAlpha
+                self.detailView.layoutIfNeeded()
+            }
             
-            panAnimator.stopAnimation(true)
+            animateToFullScreen.addCompletion { _ in
+                
+                self.detailView.mainScrollView.isScrollEnabled = true
+                self.detailView.mainScrollView.setContentOffset(CGPoint(x: .zero, y: -self.detailView.mainScrollView.adjustedContentInset.top), animated: true)
+            }
+            
+            return animateToFullScreen
         }
         
-        if let longPressAnimator = self.longPressAnimator, longPressAnimator.isInterruptible {
+        animateToFullScreen = toFullScreenAnimator?()
+        
+        toCardAnimator = { [unowned self] needsBlur in
             
-            longPressAnimator.stopAnimation(true)
+            let animateToCard = UIViewPropertyAnimator(duration: Appearance.oneTapAnimationDuration, curve: .easeOut, animations: { [unowned self] in
+                
+                if needsBlur {
+                    self.coverView.alpha = Appearance.endAlpha
+                }
+                self.detailView.layer.cornerRadius = Appearance.cardCornerRadius
+                self.detailView.frame = cardToFrame
+                self.detailView.alpha = Appearance.endAlpha
+            })
+            
+            animateToCard.addCompletion { _ in
+                
+                self.detailView.mainScrollView.isScrollEnabled = false
+                self.detailView.addGestureRecognizer(self.cardExpandGestureRecognizer)
+            }
+                                    
+            return animateToCard
+        }
+        
+        animateToCard = toCardAnimator?(true)
+        
+        toDismissAnimator = { [unowned self] in
+            
+            let animateToDismiss = UIViewPropertyAnimator(duration: Appearance.oneTapAnimationDuration, curve: .easeOut) { [unowned self] in
+                
+                self.detailView.frame = CGRect(x: .zero, y: self.view.frame.height, width: self.view.frame.width, height: self.detailView.frame.height)
+                self.coverView.alpha = .zero
+                self.detailView.layoutIfNeeded()
+            }
+            
+            animateToDismiss.addCompletion { [unowned self] _ in
+                
+                self.cleanUpAnimationRelatedObjects()
+            }
+            
+            return animateToDismiss
+        }
+        
+        animateToDismiss = toDismissAnimator?()
+    }
+    
+    func cleanUpAnimationRelatedObjects() {
+        
+        if let fullScreenAnimator = self.animateToFullScreen, fullScreenAnimator.isInterruptible {
+            
+            fullScreenAnimator.stopAnimation(true)
+        }
+        
+        if let cardAnimator = self.animateToCard, cardAnimator.isInterruptible {
+            
+            cardAnimator.stopAnimation(true)
+        }
+        
+        if let dismissAnimator = self.animateToDismiss, dismissAnimator.isInterruptible {
+            
+            dismissAnimator.stopAnimation(true)
         }
         
         self.detailViewInitialFrame = .none
         self.coverView.removeFromSuperview()
         self.detailView.removeGestureRecognizer(self.cardPanGestureRecognizer)
         self.detailView.removeFromSuperview()
-    }
-    
-    func dismissDetailView() {
         
-        if let initialFrame = detailViewInitialFrame, let _ = detailView {
-            
-            oneTapAnimator = UIViewPropertyAnimator(duration: Appearance.oneTapAnimationDuration, curve: .easeOut) { [unowned self] in
-                
-                self.detailView.frame = initialFrame
-                self.detailView.alpha = .zero
-                self.coverView.effect = .none
-            }
-            
-            oneTapAnimator.addCompletion { [unowned self] _ in
-                
-                self.cleanUpAnimationRelatedObjects()
-            }
-            
-            oneTapAnimator.startAnimation()
-        }
+        self.animateToCard = .none
+        self.animateToDismiss = .none
+        self.animateToFullScreen = .none
     }
     
     //MARK: - Detail View Delegate
     func didPressExitButton() {
-        dismissDetailView()
+        animateToDismiss.startAnimation()
     }
     
     //MARK: - Gesture Recognizers
@@ -366,33 +388,29 @@ class MainViewController: UIViewController, UITableViewDelegate, MainViewInput, 
     
     @objc func handlePan(gestureRecognizer: UIPanGestureRecognizer) {
         
-        let currentTranslation = gestureRecognizer.translation(in: view)
-        let currentPercentage: CGFloat
-
-        if currentTranslation.y < .zero {
-            
-            currentPercentage = CGFloat(Appearance.animationMiddlePoint) - (abs(currentTranslation.y) / view.frame.height) * CGFloat(Appearance.animationMiddlePoint)
-        }
-        else {
-            currentPercentage = CGFloat(Appearance.animationMiddlePoint) + (currentTranslation.y / view.frame.height) * CGFloat(Appearance.animationMiddlePoint)
-        }
+        let currentTranslation = gestureRecognizer.translation(in: view).y
         
         switch gestureRecognizer.state {
             
         case .changed:
-            presenter.updatePanAnimationPercentage(with: Double(currentPercentage))
+            
+            let translationPercentage = currentTranslation / view.frame.height * 2
+            presenter.updatePanAnimationPercentage(with: Double(translationPercentage))
+            
         case .ended:
-            presenter.finishPanAnimation(at: Double(currentPercentage))
+            presenter.finishPanAnimation()
         default:
             break
         }
     }
-}
-
-extension MainViewController: UIGestureRecognizerDelegate {
     
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+    @objc func handleSwipe(gestureRecognizer: UISwipeGestureRecognizer) {
+        animateToDismiss.startAnimation()
+    }
+    
+    @objc func handleExpand(gestureRecognizer: UITapGestureRecognizer) {
         
-        return gestureRecognizer == cellLongPressGestureRecognizer && otherGestureRecognizer == cardPanGestureRecognizer
+        detailView.removeGestureRecognizer(gestureRecognizer)
+        animateToFullScreen.startAnimation()
     }
 }

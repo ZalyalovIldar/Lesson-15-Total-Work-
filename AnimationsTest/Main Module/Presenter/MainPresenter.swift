@@ -65,8 +65,8 @@ class MainPresenter: MainInteractorOutput, MainViewOutput, MainRouterOutput, Mai
         view.updatePanAnimationPercentage(with: percentage)
     }
     
-    func finishPanAnimation(at percentage: Double) {
-        view.finishPanAnimation(at: percentage)
+    func finishPanAnimation() {
+        view.finishPanAnimation()
     }
     
     //MARK: - Router Output

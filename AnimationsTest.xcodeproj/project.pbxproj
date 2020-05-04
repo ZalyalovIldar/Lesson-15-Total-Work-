@@ -26,6 +26,19 @@
 		7386B374245586BD00EA20B8 /* NetworkManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7386B373245586BD00EA20B8 /* NetworkManagerImpl.swift */; };
 		7386B37A2455876A00EA20B8 /* HeroModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7386B3792455876A00EA20B8 /* HeroModel.swift */; };
 		739964F5245AF6D00097201B /* PanDirectionGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739964F4245AF6D00097201B /* PanDirectionGestureRecognizer.swift */; };
+		739964F9245C734E0097201B /* PresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739964F8245C734E0097201B /* PresenterTests.swift */; };
+		739964FC245D594C0097201B /* InteractorMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739964FB245D594C0097201B /* InteractorMock.swift */; };
+		739964FE245D59840097201B /* RouterMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 739964FD245D59840097201B /* RouterMock.swift */; };
+		73996501245D59F70097201B /* ViewMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73996500245D59F70097201B /* ViewMock.swift */; };
+		73996503245D5A4F0097201B /* DataSourceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73996502245D5A4F0097201B /* DataSourceMock.swift */; };
+		73996505245D656E0097201B /* PresenterMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73996504245D656E0097201B /* PresenterMock.swift */; };
+		73996507245D67670097201B /* RouterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73996506245D67670097201B /* RouterTests.swift */; };
+		7399650B245D6FD90097201B /* NetworkManagerSuccessMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7399650A245D6FD90097201B /* NetworkManagerSuccessMock.swift */; };
+		7399650D245D78120097201B /* NetworkManagerFailMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7399650C245D78120097201B /* NetworkManagerFailMock.swift */; };
+		7399650F245D78AB0097201B /* RealmManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7399650E245D78AB0097201B /* RealmManagerMock.swift */; };
+		73996511245D7C470097201B /* InteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73996510245D7C470097201B /* InteractorTests.swift */; };
+		73996513245DA3D80097201B /* DataSourceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73996512245DA3D80097201B /* DataSourceTest.swift */; };
+		73996515245DA8D40097201B /* ViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73996514245DA8D40097201B /* ViewTests.swift */; };
 		73C5F07124558B0B0026BB95 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C5F07024558B0B0026BB95 /* RealmManager.swift */; };
 		73C5F07324558C450026BB95 /* RealmManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C5F07224558C450026BB95 /* RealmManagerImpl.swift */; };
 		73C5F07A245595000026BB95 /* MainInteractorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C5F079245595000026BB95 /* MainInteractorInput.swift */; };
@@ -34,9 +47,9 @@
 		73C5F0802455B9640026BB95 /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C5F07F2455B9640026BB95 /* MainPresenter.swift */; };
 		73C5F0822455B9A90026BB95 /* MainViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C5F0812455B9A90026BB95 /* MainViewInput.swift */; };
 		73C5F0842455BA6B0026BB95 /* MainDataSourceInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73C5F0832455BA6B0026BB95 /* MainDataSourceInput.swift */; };
+		73EA1E1924606B8200C3F000 /* GestureRecognizerCompatibleScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73EA1E1824606B8200C3F000 /* GestureRecognizerCompatibleScrollView.swift */; };
 		7CBDFBD824447FB500259A8B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CBDFBD724447FB500259A8B /* AppDelegate.swift */; };
 		7CBDFBDA24447FB500259A8B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CBDFBD924447FB500259A8B /* SceneDelegate.swift */; };
-		7CBDFBDC24447FB500259A8B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CBDFBDB24447FB500259A8B /* ViewController.swift */; };
 		7CBDFBDF24447FB500259A8B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CBDFBDD24447FB500259A8B /* Main.storyboard */; };
 		7CBDFBE124447FB600259A8B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CBDFBE024447FB600259A8B /* Assets.xcassets */; };
 		7CBDFBE424447FB600259A8B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CBDFBE224447FB600259A8B /* LaunchScreen.storyboard */; };
@@ -77,6 +90,19 @@
 		7386B373245586BD00EA20B8 /* NetworkManagerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerImpl.swift; sourceTree = "<group>"; };
 		7386B3792455876A00EA20B8 /* HeroModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroModel.swift; sourceTree = "<group>"; };
 		739964F4245AF6D00097201B /* PanDirectionGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanDirectionGestureRecognizer.swift; sourceTree = "<group>"; };
+		739964F8245C734E0097201B /* PresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresenterTests.swift; sourceTree = "<group>"; };
+		739964FB245D594C0097201B /* InteractorMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractorMock.swift; sourceTree = "<group>"; };
+		739964FD245D59840097201B /* RouterMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterMock.swift; sourceTree = "<group>"; };
+		73996500245D59F70097201B /* ViewMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewMock.swift; sourceTree = "<group>"; };
+		73996502245D5A4F0097201B /* DataSourceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSourceMock.swift; sourceTree = "<group>"; };
+		73996504245D656E0097201B /* PresenterMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresenterMock.swift; sourceTree = "<group>"; };
+		73996506245D67670097201B /* RouterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterTests.swift; sourceTree = "<group>"; };
+		7399650A245D6FD90097201B /* NetworkManagerSuccessMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerSuccessMock.swift; sourceTree = "<group>"; };
+		7399650C245D78120097201B /* NetworkManagerFailMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerFailMock.swift; sourceTree = "<group>"; };
+		7399650E245D78AB0097201B /* RealmManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManagerMock.swift; sourceTree = "<group>"; };
+		73996510245D7C470097201B /* InteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractorTests.swift; sourceTree = "<group>"; };
+		73996512245DA3D80097201B /* DataSourceTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSourceTest.swift; sourceTree = "<group>"; };
+		73996514245DA8D40097201B /* ViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewTests.swift; sourceTree = "<group>"; };
 		73C5F07024558B0B0026BB95 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		73C5F07224558C450026BB95 /* RealmManagerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManagerImpl.swift; sourceTree = "<group>"; };
 		73C5F079245595000026BB95 /* MainInteractorInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainInteractorInput.swift; sourceTree = "<group>"; };
@@ -85,10 +111,10 @@
 		73C5F07F2455B9640026BB95 /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
 		73C5F0812455B9A90026BB95 /* MainViewInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewInput.swift; sourceTree = "<group>"; };
 		73C5F0832455BA6B0026BB95 /* MainDataSourceInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDataSourceInput.swift; sourceTree = "<group>"; };
+		73EA1E1824606B8200C3F000 /* GestureRecognizerCompatibleScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestureRecognizerCompatibleScrollView.swift; sourceTree = "<group>"; };
 		7CBDFBD424447FB500259A8B /* AnimationsTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnimationsTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CBDFBD724447FB500259A8B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7CBDFBD924447FB500259A8B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		7CBDFBDB24447FB500259A8B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		7CBDFBDE24447FB500259A8B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7CBDFBE024447FB600259A8B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7CBDFBE324447FB600259A8B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -142,6 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				737A11B12456E75B00AE7CF8 /* DetailView.swift */,
+				73EA1E1824606B8200C3F000 /* GestureRecognizerCompatibleScrollView.swift */,
 			);
 			path = "Detail View";
 			sourceTree = "<group>";
@@ -210,6 +237,33 @@
 				7386B3792455876A00EA20B8 /* HeroModel.swift */,
 			);
 			path = Realm;
+			sourceTree = "<group>";
+		};
+		739964F6245C72AE0097201B /* Main Module Tests */ = {
+			isa = PBXGroup;
+			children = (
+				739964F8245C734E0097201B /* PresenterTests.swift */,
+				73996506245D67670097201B /* RouterTests.swift */,
+				73996510245D7C470097201B /* InteractorTests.swift */,
+				73996512245DA3D80097201B /* DataSourceTest.swift */,
+				73996514245DA8D40097201B /* ViewTests.swift */,
+			);
+			path = "Main Module Tests";
+			sourceTree = "<group>";
+		};
+		739964FA245D593F0097201B /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				739964FB245D594C0097201B /* InteractorMock.swift */,
+				739964FD245D59840097201B /* RouterMock.swift */,
+				73996500245D59F70097201B /* ViewMock.swift */,
+				73996502245D5A4F0097201B /* DataSourceMock.swift */,
+				73996504245D656E0097201B /* PresenterMock.swift */,
+				7399650A245D6FD90097201B /* NetworkManagerSuccessMock.swift */,
+				7399650C245D78120097201B /* NetworkManagerFailMock.swift */,
+				7399650E245D78AB0097201B /* RealmManagerMock.swift */,
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 		73C5F06E24558AE30026BB95 /* Network */ = {
@@ -310,7 +364,6 @@
 				7386B3662455851700EA20B8 /* Entity */,
 				7CBDFBD724447FB500259A8B /* AppDelegate.swift */,
 				7CBDFBD924447FB500259A8B /* SceneDelegate.swift */,
-				7CBDFBDB24447FB500259A8B /* ViewController.swift */,
 				7CBDFBDD24447FB500259A8B /* Main.storyboard */,
 				7CBDFBE024447FB600259A8B /* Assets.xcassets */,
 				7CBDFBE224447FB600259A8B /* LaunchScreen.storyboard */,
@@ -322,6 +375,8 @@
 		7CBDFBED24447FB600259A8B /* AnimationsTestTests */ = {
 			isa = PBXGroup;
 			children = (
+				739964FA245D593F0097201B /* Mocks */,
+				739964F6245C72AE0097201B /* Main Module Tests */,
 				7CBDFBEE24447FB600259A8B /* AnimationsTestTests.swift */,
 				7CBDFBF024447FB600259A8B /* Info.plist */,
 			);
@@ -516,7 +571,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7CBDFBDC24447FB500259A8B /* ViewController.swift in Sources */,
 				737A11A12455C5BC00AE7CF8 /* MainViewController.swift in Sources */,
 				7386B36D245585BD00EA20B8 /* Extensions.swift in Sources */,
 				73C5F07124558B0B0026BB95 /* RealmManager.swift in Sources */,
@@ -532,6 +586,7 @@
 				737A11A72455CBD100AE7CF8 /* MainTableViewCell.swift in Sources */,
 				7CBDFBDA24447FB500259A8B /* SceneDelegate.swift in Sources */,
 				7386B36A2455855800EA20B8 /* HeroDto.swift in Sources */,
+				73EA1E1924606B8200C3F000 /* GestureRecognizerCompatibleScrollView.swift in Sources */,
 				73C5F0842455BA6B0026BB95 /* MainDataSourceInput.swift in Sources */,
 				7386B374245586BD00EA20B8 /* NetworkManagerImpl.swift in Sources */,
 				737A11B22456E75B00AE7CF8 /* DetailView.swift in Sources */,
@@ -553,7 +608,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				73996507245D67670097201B /* RouterTests.swift in Sources */,
+				7399650F245D78AB0097201B /* RealmManagerMock.swift in Sources */,
+				73996511245D7C470097201B /* InteractorTests.swift in Sources */,
+				739964FC245D594C0097201B /* InteractorMock.swift in Sources */,
+				739964F9245C734E0097201B /* PresenterTests.swift in Sources */,
+				73996503245D5A4F0097201B /* DataSourceMock.swift in Sources */,
+				73996515245DA8D40097201B /* ViewTests.swift in Sources */,
+				73996505245D656E0097201B /* PresenterMock.swift in Sources */,
+				739964FE245D59840097201B /* RouterMock.swift in Sources */,
 				7CBDFBEF24447FB600259A8B /* AnimationsTestTests.swift in Sources */,
+				73996501245D59F70097201B /* ViewMock.swift in Sources */,
+				7399650D245D78120097201B /* NetworkManagerFailMock.swift in Sources */,
+				73996513245DA3D80097201B /* DataSourceTest.swift in Sources */,
+				7399650B245D6FD90097201B /* NetworkManagerSuccessMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

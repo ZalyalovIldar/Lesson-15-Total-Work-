@@ -34,6 +34,5 @@ protocol MainViewOutput: AnyObject {
     func updatePanAnimationPercentage(with percentage: Double)
     
     /// tells presenter that animation should be finished
-    /// - Parameter percentage: completion percentage to be finished at
-    func finishPanAnimation(at percentage: Double)
+    func finishPanAnimation()
 }
