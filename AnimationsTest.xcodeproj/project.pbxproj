@@ -3,17 +3,49 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0AC7B38CAF3667DAB6A650DD /* Pods_AnimationsTestTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D868A9F87B2985025EF7AB80 /* Pods_AnimationsTestTests.framework */; };
+		6BE936AFDF6AED2018A4C30A /* Pods_AnimationsTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3ECD178E91E23C1FA422CF37 /* Pods_AnimationsTest.framework */; };
 		7CBDFBD824447FB500259A8B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CBDFBD724447FB500259A8B /* AppDelegate.swift */; };
 		7CBDFBDA24447FB500259A8B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CBDFBD924447FB500259A8B /* SceneDelegate.swift */; };
-		7CBDFBDC24447FB500259A8B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CBDFBDB24447FB500259A8B /* ViewController.swift */; };
 		7CBDFBDF24447FB500259A8B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CBDFBDD24447FB500259A8B /* Main.storyboard */; };
 		7CBDFBE124447FB600259A8B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CBDFBE024447FB600259A8B /* Assets.xcassets */; };
 		7CBDFBE424447FB600259A8B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CBDFBE224447FB600259A8B /* LaunchScreen.storyboard */; };
 		7CBDFBEF24447FB600259A8B /* AnimationsTestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CBDFBEE24447FB600259A8B /* AnimationsTestTests.swift */; };
+		FA31532D245EDB3A004360E4 /* PostsModuleAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA31532C245EDB3A004360E4 /* PostsModuleAssembly.swift */; };
+		FA57B7BA2462C2F400FD0913 /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA57B7B92462C2F400FD0913 /* PostModel.swift */; };
+		FA57B7BD2462C46F00FD0913 /* RealmDatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA57B7BC2462C46F00FD0913 /* RealmDatabaseManager.swift */; };
+		FA57B7BF2462C49100FD0913 /* RealmDatabaseManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA57B7BE2462C49100FD0913 /* RealmDatabaseManagerImpl.swift */; };
+		FA57B7C62462D16F00FD0913 /* DetailPostModuleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA57B7C52462D16F00FD0913 /* DetailPostModuleViewController.swift */; };
+		FA57B7C82462D1A500FD0913 /* DetailPostModuleViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA57B7C72462D1A500FD0913 /* DetailPostModuleViewInput.swift */; };
+		FA57B7CA2462D1BD00FD0913 /* DetailPostModuleViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA57B7C92462D1BD00FD0913 /* DetailPostModuleViewOutput.swift */; };
+		FA57B7CC2462D1DB00FD0913 /* DetailPostModuleInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA57B7CB2462D1DB00FD0913 /* DetailPostModuleInteractor.swift */; };
+		FA57B7CE2462D1F600FD0913 /* DetailPostModuleInteractorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA57B7CD2462D1F600FD0913 /* DetailPostModuleInteractorInput.swift */; };
+		FA57B7D02462D20200FD0913 /* DetailPostModuleInteractorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA57B7CF2462D20200FD0913 /* DetailPostModuleInteractorOutput.swift */; };
+		FA57B7D22462D21700FD0913 /* DetailPostModulePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA57B7D12462D21700FD0913 /* DetailPostModulePresenter.swift */; };
+		FA57B7D42462D24B00FD0913 /* DetailPostModuleAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA57B7D32462D24B00FD0913 /* DetailPostModuleAssembly.swift */; };
+		FA57B7D62462D5B300FD0913 /* DetailPostModuleRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA57B7D52462D5B300FD0913 /* DetailPostModuleRouter.swift */; };
+		FA57B7D82462D5C300FD0913 /* DetailPostModuleRouterInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA57B7D72462D5C300FD0913 /* DetailPostModuleRouterInput.swift */; };
+		FA57B7DA2462DA7000FD0913 /* PostModuleRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA57B7D92462DA7000FD0913 /* PostModuleRouter.swift */; };
+		FA57B7DC2462DA8400FD0913 /* PostModuleRouterInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA57B7DB2462DA8400FD0913 /* PostModuleRouterInput.swift */; };
+		FAFE6A1F245ECB0C006C7107 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFE6A1E245ECB0C006C7107 /* CustomTableViewCell.swift */; };
+		FAFE6A21245ECBB1006C7107 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFE6A20245ECBB1006C7107 /* Constants.swift */; };
+		FAFE6A24245ECC06006C7107 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFE6A23245ECC06006C7107 /* Post.swift */; };
+		FAFE6A28245ECCAF006C7107 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFE6A27245ECCAF006C7107 /* NetworkManager.swift */; };
+		FAFE6A2A245ECCC2006C7107 /* NetworkManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFE6A29245ECCC2006C7107 /* NetworkManagerImpl.swift */; };
+		FAFE6A32245ECE9D006C7107 /* PostsModuleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFE6A31245ECE9D006C7107 /* PostsModuleViewController.swift */; };
+		FAFE6A34245ECEAA006C7107 /* PostsModuleViewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFE6A33245ECEAA006C7107 /* PostsModuleViewInput.swift */; };
+		FAFE6A36245ECEC2006C7107 /* PostsModuleViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFE6A35245ECEC2006C7107 /* PostsModuleViewOutput.swift */; };
+		FAFE6A3A245ED015006C7107 /* PostDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFE6A39245ED015006C7107 /* PostDto.swift */; };
+		FAFE6A3D245ED139006C7107 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFE6A3C245ED139006C7107 /* Extensions.swift */; };
+		FAFE6A3F245ED1AD006C7107 /* ProfileImageUrlConstructor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFE6A3E245ED1AD006C7107 /* ProfileImageUrlConstructor.swift */; };
+		FAFE6A41245ED369006C7107 /* PostsModulePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFE6A40245ED369006C7107 /* PostsModulePresenter.swift */; };
+		FAFE6A43245ED3A7006C7107 /* PostsModuleInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFE6A42245ED3A7006C7107 /* PostsModuleInteractor.swift */; };
+		FAFE6A45245ED3C3006C7107 /* PostsModuleInteractorInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFE6A44245ED3C3006C7107 /* PostsModuleInteractorInput.swift */; };
+		FAFE6A47245ED3F5006C7107 /* PostsModuleInteractorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFE6A46245ED3F5006C7107 /* PostsModuleInteractorOutput.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,10 +59,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3ECD178E91E23C1FA422CF37 /* Pods_AnimationsTest.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AnimationsTest.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4E2F2A5DEF93C11B933BADEE /* Pods-AnimationsTestTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnimationsTestTests.debug.xcconfig"; path = "Target Support Files/Pods-AnimationsTestTests/Pods-AnimationsTestTests.debug.xcconfig"; sourceTree = "<group>"; };
 		7CBDFBD424447FB500259A8B /* AnimationsTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnimationsTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CBDFBD724447FB500259A8B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7CBDFBD924447FB500259A8B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		7CBDFBDB24447FB500259A8B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		7CBDFBDE24447FB500259A8B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7CBDFBE024447FB600259A8B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7CBDFBE324447FB600259A8B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -38,6 +71,41 @@
 		7CBDFBEA24447FB600259A8B /* AnimationsTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AnimationsTestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CBDFBEE24447FB600259A8B /* AnimationsTestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationsTestTests.swift; sourceTree = "<group>"; };
 		7CBDFBF024447FB600259A8B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		93FD614B37EE2F464D0E7E9C /* Pods-AnimationsTestTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnimationsTestTests.release.xcconfig"; path = "Target Support Files/Pods-AnimationsTestTests/Pods-AnimationsTestTests.release.xcconfig"; sourceTree = "<group>"; };
+		95310B34BE71449B4A0FF325 /* Pods-AnimationsTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnimationsTest.debug.xcconfig"; path = "Target Support Files/Pods-AnimationsTest/Pods-AnimationsTest.debug.xcconfig"; sourceTree = "<group>"; };
+		AB253E19CE9F2F09A8BD282F /* Pods-AnimationsTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnimationsTest.release.xcconfig"; path = "Target Support Files/Pods-AnimationsTest/Pods-AnimationsTest.release.xcconfig"; sourceTree = "<group>"; };
+		D868A9F87B2985025EF7AB80 /* Pods_AnimationsTestTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AnimationsTestTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA31532C245EDB3A004360E4 /* PostsModuleAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsModuleAssembly.swift; sourceTree = "<group>"; };
+		FA57B7B92462C2F400FD0913 /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
+		FA57B7BC2462C46F00FD0913 /* RealmDatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDatabaseManager.swift; sourceTree = "<group>"; };
+		FA57B7BE2462C49100FD0913 /* RealmDatabaseManagerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDatabaseManagerImpl.swift; sourceTree = "<group>"; };
+		FA57B7C52462D16F00FD0913 /* DetailPostModuleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPostModuleViewController.swift; sourceTree = "<group>"; };
+		FA57B7C72462D1A500FD0913 /* DetailPostModuleViewInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPostModuleViewInput.swift; sourceTree = "<group>"; };
+		FA57B7C92462D1BD00FD0913 /* DetailPostModuleViewOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPostModuleViewOutput.swift; sourceTree = "<group>"; };
+		FA57B7CB2462D1DB00FD0913 /* DetailPostModuleInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPostModuleInteractor.swift; sourceTree = "<group>"; };
+		FA57B7CD2462D1F600FD0913 /* DetailPostModuleInteractorInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPostModuleInteractorInput.swift; sourceTree = "<group>"; };
+		FA57B7CF2462D20200FD0913 /* DetailPostModuleInteractorOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPostModuleInteractorOutput.swift; sourceTree = "<group>"; };
+		FA57B7D12462D21700FD0913 /* DetailPostModulePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPostModulePresenter.swift; sourceTree = "<group>"; };
+		FA57B7D32462D24B00FD0913 /* DetailPostModuleAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPostModuleAssembly.swift; sourceTree = "<group>"; };
+		FA57B7D52462D5B300FD0913 /* DetailPostModuleRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPostModuleRouter.swift; sourceTree = "<group>"; };
+		FA57B7D72462D5C300FD0913 /* DetailPostModuleRouterInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPostModuleRouterInput.swift; sourceTree = "<group>"; };
+		FA57B7D92462DA7000FD0913 /* PostModuleRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModuleRouter.swift; sourceTree = "<group>"; };
+		FA57B7DB2462DA8400FD0913 /* PostModuleRouterInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModuleRouterInput.swift; sourceTree = "<group>"; };
+		FAFE6A1E245ECB0C006C7107 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
+		FAFE6A20245ECBB1006C7107 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		FAFE6A23245ECC06006C7107 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		FAFE6A27245ECCAF006C7107 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		FAFE6A29245ECCC2006C7107 /* NetworkManagerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerImpl.swift; sourceTree = "<group>"; };
+		FAFE6A31245ECE9D006C7107 /* PostsModuleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsModuleViewController.swift; sourceTree = "<group>"; };
+		FAFE6A33245ECEAA006C7107 /* PostsModuleViewInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsModuleViewInput.swift; sourceTree = "<group>"; };
+		FAFE6A35245ECEC2006C7107 /* PostsModuleViewOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsModuleViewOutput.swift; sourceTree = "<group>"; };
+		FAFE6A39245ED015006C7107 /* PostDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDto.swift; sourceTree = "<group>"; };
+		FAFE6A3C245ED139006C7107 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		FAFE6A3E245ED1AD006C7107 /* ProfileImageUrlConstructor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageUrlConstructor.swift; sourceTree = "<group>"; };
+		FAFE6A40245ED369006C7107 /* PostsModulePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsModulePresenter.swift; sourceTree = "<group>"; };
+		FAFE6A42245ED3A7006C7107 /* PostsModuleInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsModuleInteractor.swift; sourceTree = "<group>"; };
+		FAFE6A44245ED3C3006C7107 /* PostsModuleInteractorInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsModuleInteractorInput.swift; sourceTree = "<group>"; };
+		FAFE6A46245ED3F5006C7107 /* PostsModuleInteractorOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsModuleInteractorOutput.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +113,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6BE936AFDF6AED2018A4C30A /* Pods_AnimationsTest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,18 +121,32 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0AC7B38CAF3667DAB6A650DD /* Pods_AnimationsTestTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4A15535D359C7C9B2A66FE58 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				95310B34BE71449B4A0FF325 /* Pods-AnimationsTest.debug.xcconfig */,
+				AB253E19CE9F2F09A8BD282F /* Pods-AnimationsTest.release.xcconfig */,
+				4E2F2A5DEF93C11B933BADEE /* Pods-AnimationsTestTests.debug.xcconfig */,
+				93FD614B37EE2F464D0E7E9C /* Pods-AnimationsTestTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		7CBDFBCB24447FB500259A8B = {
 			isa = PBXGroup;
 			children = (
 				7CBDFBD624447FB500259A8B /* AnimationsTest */,
 				7CBDFBED24447FB600259A8B /* AnimationsTestTests */,
 				7CBDFBD524447FB500259A8B /* Products */,
+				4A15535D359C7C9B2A66FE58 /* Pods */,
+				8898EBA07F6BDF0F8B102FD2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -79,9 +162,12 @@
 		7CBDFBD624447FB500259A8B /* AnimationsTest */ = {
 			isa = PBXGroup;
 			children = (
+				FAFE6A3B245ED12B006C7107 /* Helper */,
+				FAFE6A2B245ECE10006C7107 /* Module */,
+				FAFE6A25245ECC7A006C7107 /* Service */,
+				FAFE6A22245ECBEE006C7107 /* Entity */,
 				7CBDFBD724447FB500259A8B /* AppDelegate.swift */,
 				7CBDFBD924447FB500259A8B /* SceneDelegate.swift */,
-				7CBDFBDB24447FB500259A8B /* ViewController.swift */,
 				7CBDFBDD24447FB500259A8B /* Main.storyboard */,
 				7CBDFBE024447FB600259A8B /* Assets.xcassets */,
 				7CBDFBE224447FB600259A8B /* LaunchScreen.storyboard */,
@@ -99,6 +185,194 @@
 			path = AnimationsTestTests;
 			sourceTree = "<group>";
 		};
+		8898EBA07F6BDF0F8B102FD2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3ECD178E91E23C1FA422CF37 /* Pods_AnimationsTest.framework */,
+				D868A9F87B2985025EF7AB80 /* Pods_AnimationsTestTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FA57B7B82462C2A900FD0913 /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				FA57B7B92462C2F400FD0913 /* PostModel.swift */,
+			);
+			path = Realm;
+			sourceTree = "<group>";
+		};
+		FA57B7BB2462C45800FD0913 /* RealmDatabaseManager */ = {
+			isa = PBXGroup;
+			children = (
+				FA57B7BC2462C46F00FD0913 /* RealmDatabaseManager.swift */,
+				FA57B7BE2462C49100FD0913 /* RealmDatabaseManagerImpl.swift */,
+			);
+			path = RealmDatabaseManager;
+			sourceTree = "<group>";
+		};
+		FA57B7C02462D11700FD0913 /* DetailPostModule */ = {
+			isa = PBXGroup;
+			children = (
+				FA57B7C42462D15700FD0913 /* Router */,
+				FA57B7C32462D15100FD0913 /* Interactor */,
+				FA57B7C22462D14B00FD0913 /* Presenter */,
+				FA57B7C12462D14300FD0913 /* View */,
+				FA57B7D32462D24B00FD0913 /* DetailPostModuleAssembly.swift */,
+			);
+			path = DetailPostModule;
+			sourceTree = "<group>";
+		};
+		FA57B7C12462D14300FD0913 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FA57B7C52462D16F00FD0913 /* DetailPostModuleViewController.swift */,
+				FA57B7C72462D1A500FD0913 /* DetailPostModuleViewInput.swift */,
+				FA57B7C92462D1BD00FD0913 /* DetailPostModuleViewOutput.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		FA57B7C22462D14B00FD0913 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				FA57B7D12462D21700FD0913 /* DetailPostModulePresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		FA57B7C32462D15100FD0913 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				FA57B7CB2462D1DB00FD0913 /* DetailPostModuleInteractor.swift */,
+				FA57B7CD2462D1F600FD0913 /* DetailPostModuleInteractorInput.swift */,
+				FA57B7CF2462D20200FD0913 /* DetailPostModuleInteractorOutput.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		FA57B7C42462D15700FD0913 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				FA57B7D52462D5B300FD0913 /* DetailPostModuleRouter.swift */,
+				FA57B7D72462D5C300FD0913 /* DetailPostModuleRouterInput.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		FAFE6A22245ECBEE006C7107 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				FA57B7B82462C2A900FD0913 /* Realm */,
+				FAFE6A38245ED005006C7107 /* DTO */,
+				FAFE6A37245ECFFD006C7107 /* Network */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		FAFE6A25245ECC7A006C7107 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				FA57B7BB2462C45800FD0913 /* RealmDatabaseManager */,
+				FAFE6A26245ECC83006C7107 /* NetworkManager */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		FAFE6A26245ECC83006C7107 /* NetworkManager */ = {
+			isa = PBXGroup;
+			children = (
+				FAFE6A27245ECCAF006C7107 /* NetworkManager.swift */,
+				FAFE6A29245ECCC2006C7107 /* NetworkManagerImpl.swift */,
+			);
+			path = NetworkManager;
+			sourceTree = "<group>";
+		};
+		FAFE6A2B245ECE10006C7107 /* Module */ = {
+			isa = PBXGroup;
+			children = (
+				FA57B7C02462D11700FD0913 /* DetailPostModule */,
+				FAFE6A2C245ECE23006C7107 /* PostsModule */,
+			);
+			path = Module;
+			sourceTree = "<group>";
+		};
+		FAFE6A2C245ECE23006C7107 /* PostsModule */ = {
+			isa = PBXGroup;
+			children = (
+				FAFE6A30245ECE57006C7107 /* Router */,
+				FAFE6A2F245ECE3E006C7107 /* Interactor */,
+				FAFE6A2E245ECE37006C7107 /* Presenter */,
+				FAFE6A2D245ECE33006C7107 /* View */,
+				FA31532C245EDB3A004360E4 /* PostsModuleAssembly.swift */,
+			);
+			path = PostsModule;
+			sourceTree = "<group>";
+		};
+		FAFE6A2D245ECE33006C7107 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FAFE6A31245ECE9D006C7107 /* PostsModuleViewController.swift */,
+				FAFE6A33245ECEAA006C7107 /* PostsModuleViewInput.swift */,
+				FAFE6A35245ECEC2006C7107 /* PostsModuleViewOutput.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		FAFE6A2E245ECE37006C7107 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				FAFE6A40245ED369006C7107 /* PostsModulePresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		FAFE6A2F245ECE3E006C7107 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				FAFE6A42245ED3A7006C7107 /* PostsModuleInteractor.swift */,
+				FAFE6A44245ED3C3006C7107 /* PostsModuleInteractorInput.swift */,
+				FAFE6A46245ED3F5006C7107 /* PostsModuleInteractorOutput.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		FAFE6A30245ECE57006C7107 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				FA57B7D92462DA7000FD0913 /* PostModuleRouter.swift */,
+				FA57B7DB2462DA8400FD0913 /* PostModuleRouterInput.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		FAFE6A37245ECFFD006C7107 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				FAFE6A23245ECC06006C7107 /* Post.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		FAFE6A38245ED005006C7107 /* DTO */ = {
+			isa = PBXGroup;
+			children = (
+				FAFE6A39245ED015006C7107 /* PostDto.swift */,
+			);
+			path = DTO;
+			sourceTree = "<group>";
+		};
+		FAFE6A3B245ED12B006C7107 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				FAFE6A1E245ECB0C006C7107 /* CustomTableViewCell.swift */,
+				FAFE6A20245ECBB1006C7107 /* Constants.swift */,
+				FAFE6A3C245ED139006C7107 /* Extensions.swift */,
+				FAFE6A3E245ED1AD006C7107 /* ProfileImageUrlConstructor.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -106,9 +380,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7CBDFBF324447FB600259A8B /* Build configuration list for PBXNativeTarget "AnimationsTest" */;
 			buildPhases = (
+				FC46762E65E9D9F067244998 /* [CP] Check Pods Manifest.lock */,
 				7CBDFBD024447FB500259A8B /* Sources */,
 				7CBDFBD124447FB500259A8B /* Frameworks */,
 				7CBDFBD224447FB500259A8B /* Resources */,
+				A4BA10D416A4046D9713AA70 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -123,6 +399,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7CBDFBF624447FB600259A8B /* Build configuration list for PBXNativeTarget "AnimationsTestTests" */;
 			buildPhases = (
+				5B4C51872B80A4F558D09F0A /* [CP] Check Pods Manifest.lock */,
 				7CBDFBE624447FB600259A8B /* Sources */,
 				7CBDFBE724447FB600259A8B /* Frameworks */,
 				7CBDFBE824447FB600259A8B /* Resources */,
@@ -195,14 +472,108 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		5B4C51872B80A4F558D09F0A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AnimationsTestTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A4BA10D416A4046D9713AA70 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AnimationsTest/Pods-AnimationsTest-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AnimationsTest/Pods-AnimationsTest-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AnimationsTest/Pods-AnimationsTest-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FC46762E65E9D9F067244998 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AnimationsTest-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		7CBDFBD024447FB500259A8B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7CBDFBDC24447FB500259A8B /* ViewController.swift in Sources */,
+				FA57B7C82462D1A500FD0913 /* DetailPostModuleViewInput.swift in Sources */,
+				FAFE6A32245ECE9D006C7107 /* PostsModuleViewController.swift in Sources */,
+				FAFE6A28245ECCAF006C7107 /* NetworkManager.swift in Sources */,
+				FA57B7BD2462C46F00FD0913 /* RealmDatabaseManager.swift in Sources */,
+				FA57B7D42462D24B00FD0913 /* DetailPostModuleAssembly.swift in Sources */,
+				FAFE6A3F245ED1AD006C7107 /* ProfileImageUrlConstructor.swift in Sources */,
+				FAFE6A1F245ECB0C006C7107 /* CustomTableViewCell.swift in Sources */,
+				FAFE6A43245ED3A7006C7107 /* PostsModuleInteractor.swift in Sources */,
 				7CBDFBD824447FB500259A8B /* AppDelegate.swift in Sources */,
+				FAFE6A34245ECEAA006C7107 /* PostsModuleViewInput.swift in Sources */,
+				FAFE6A41245ED369006C7107 /* PostsModulePresenter.swift in Sources */,
+				FA57B7D82462D5C300FD0913 /* DetailPostModuleRouterInput.swift in Sources */,
+				FA57B7C62462D16F00FD0913 /* DetailPostModuleViewController.swift in Sources */,
 				7CBDFBDA24447FB500259A8B /* SceneDelegate.swift in Sources */,
+				FAFE6A21245ECBB1006C7107 /* Constants.swift in Sources */,
+				FA57B7DC2462DA8400FD0913 /* PostModuleRouterInput.swift in Sources */,
+				FAFE6A45245ED3C3006C7107 /* PostsModuleInteractorInput.swift in Sources */,
+				FAFE6A3D245ED139006C7107 /* Extensions.swift in Sources */,
+				FAFE6A47245ED3F5006C7107 /* PostsModuleInteractorOutput.swift in Sources */,
+				FAFE6A2A245ECCC2006C7107 /* NetworkManagerImpl.swift in Sources */,
+				FA57B7D22462D21700FD0913 /* DetailPostModulePresenter.swift in Sources */,
+				FA57B7BA2462C2F400FD0913 /* PostModel.swift in Sources */,
+				FAFE6A3A245ED015006C7107 /* PostDto.swift in Sources */,
+				FA31532D245EDB3A004360E4 /* PostsModuleAssembly.swift in Sources */,
+				FA57B7CE2462D1F600FD0913 /* DetailPostModuleInteractorInput.swift in Sources */,
+				FA57B7D02462D20200FD0913 /* DetailPostModuleInteractorOutput.swift in Sources */,
+				FA57B7CA2462D1BD00FD0913 /* DetailPostModuleViewOutput.swift in Sources */,
+				FA57B7BF2462C49100FD0913 /* RealmDatabaseManagerImpl.swift in Sources */,
+				FAFE6A24245ECC06006C7107 /* Post.swift in Sources */,
+				FA57B7D62462D5B300FD0913 /* DetailPostModuleRouter.swift in Sources */,
+				FA57B7CC2462D1DB00FD0913 /* DetailPostModuleInteractor.swift in Sources */,
+				FA57B7DA2462DA7000FD0913 /* PostModuleRouter.swift in Sources */,
+				FAFE6A36245ECEC2006C7107 /* PostsModuleViewOutput.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -360,6 +731,7 @@
 		};
 		7CBDFBF424447FB600259A8B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 95310B34BE71449B4A0FF325 /* Pods-AnimationsTest.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -377,6 +749,7 @@
 		};
 		7CBDFBF524447FB600259A8B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AB253E19CE9F2F09A8BD282F /* Pods-AnimationsTest.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -394,6 +767,7 @@
 		};
 		7CBDFBF724447FB600259A8B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4E2F2A5DEF93C11B933BADEE /* Pods-AnimationsTestTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -415,6 +789,7 @@
 		};
 		7CBDFBF824447FB600259A8B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 93FD614B37EE2F464D0E7E9C /* Pods-AnimationsTestTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
