@@ -49,4 +49,13 @@ class RealmDatabaseManagerImpl: RealmDatabaseManager {
         }
     }
     
+       func deletePost(post: PostDto) {
+        
+            let postModel = post.toModel()
+            
+            try! realm.write {
+                realm.delete(realm.objects(PostModel.self).filter("id=%@",postModel.id))
+            }
+       }
+    
 }

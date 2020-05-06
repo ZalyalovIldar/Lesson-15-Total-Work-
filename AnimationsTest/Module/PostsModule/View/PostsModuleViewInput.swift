@@ -11,4 +11,5 @@ import Foundation
 protocol PostsModuleViewInput: AnyObject {
     
     func didFinishLoadingPosts(posts: [PostDto])
+    func didFinishDeletingPost()
 }

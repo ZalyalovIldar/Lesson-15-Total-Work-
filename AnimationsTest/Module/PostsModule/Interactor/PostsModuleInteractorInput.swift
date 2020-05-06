@@ -14,4 +14,5 @@ protocol PostsModuleInteractorInput: AnyObject {
     func loadPostsFromNetwork()
     func convertPostsToDto(posts: [Post])
     func savePostsToDatabase(posts: [PostDto])
+    func deletePost(post: PostDto)
 }

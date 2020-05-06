@@ -37,4 +37,11 @@ class PostsModuleInteractor: PostsModuleInteractorInput {
     func savePostsToDatabase(posts: [PostDto]) {
         databaseManager.savePosts(posts: posts)
     }
+    
+    func deletePost(post: PostDto) {
+        
+        databaseManager.deletePost(post: post)
+        presenter.didFinishDeletingPost()
+    }
+    
 }

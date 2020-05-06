@@ -12,4 +12,5 @@ protocol PostsModuleViewOutput: AnyObject {
     
     func loadPosts()
     func editButtonPressed(for post: PostDto)
+    func deleteButtonPressed(for post: PostDto)
 }

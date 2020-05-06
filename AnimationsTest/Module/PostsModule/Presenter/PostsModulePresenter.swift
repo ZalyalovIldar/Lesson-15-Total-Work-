@@ -9,7 +9,7 @@
 import Foundation
 
 class PostsModulePresenter: PostsModuleViewOutput, PostsModuleInteractorOutput {
-    
+
     weak var view: PostsModuleViewInput!
     var interactor: PostsModuleInteractorInput!
     var router: PostModuleRouterInput!
@@ -39,6 +39,14 @@ class PostsModulePresenter: PostsModuleViewOutput, PostsModuleInteractorOutput {
     
     func editButtonPressed(for post: PostDto) {
         router.editButtonPressed(for: post)
+    }
+    
+    func deleteButtonPressed(for post: PostDto) {
+        interactor.deletePost(post: post)
+    }
+    
+    func didFinishDeletingPost() {
+        view.didFinishDeletingPost()
     }
     
 }

@@ -13,4 +13,5 @@ protocol PostsModuleInteractorOutput: AnyObject {
     func didFinishLoadingPostsFromNetwork(posts: [Post])
     func didFinishConvertingPostsToDto(posts: [PostDto])
     func didFinishLoadingPostsFromDatabase(posts: [PostDto])
+    func didFinishDeletingPost()
 }

@@ -23,5 +23,7 @@ class Constants {
     static let toDetailPostViewSegueName = "toDetailPostViewSegue"
     
     static let editActionTitle = "Edit"
+    static let deleteActionTitile = "Delete"
+    
     static let saveButtonTitle = "Save"
 }

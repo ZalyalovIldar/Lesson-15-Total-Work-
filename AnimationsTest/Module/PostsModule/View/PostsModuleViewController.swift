@@ -54,7 +54,14 @@ class PostsModuleViewController: UIViewController, PostsModuleViewInput, UITable
             self.presenter.editButtonPressed(for: self.posts[indexPath.row])
         }
         
-        return [editButton]
+        let deleteButton = UITableViewRowAction(style: .default, title: Constants.deleteActionTitile) { (rowAction, indexPath) in
+            
+            self.presenter.deleteButtonPressed(for: self.posts[indexPath.row])
+            
+        }
+        deleteButton.backgroundColor = UIColor.red
+        
+        return [deleteButton, editButton]
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -72,5 +79,10 @@ class PostsModuleViewController: UIViewController, PostsModuleViewInput, UITable
     func didFinishEditing() {
         presenter.loadPosts()
     }
+    
+    func didFinishDeletingPost() {
+        presenter.loadPosts()
+    }
+    
     
 }

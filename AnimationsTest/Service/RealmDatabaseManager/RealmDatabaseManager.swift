@@ -13,4 +13,5 @@ protocol RealmDatabaseManager {
     func savePosts(posts: [PostDto])
     func getPosts() -> [PostDto]
     func updatePost(post: PostDto)
+    func deletePost(post: PostDto)
 }
