@@ -18,6 +18,7 @@ class PostsModuleViewController: UIViewController, PostsModuleViewInput, UITable
     
     var presenter: PostsModuleViewOutput!
     var posts: [PostDto] = []
+    var hapticFeedbackGenerator = UIImpactFeedbackGenerator(style: .light)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,6 +77,13 @@ class PostsModuleViewController: UIViewController, PostsModuleViewInput, UITable
         }
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        postsTableView.deselectRow(at: indexPath, animated: true)
+        hapticFeedbackGenerator.prepare()
+        hapticFeedbackGenerator.impactOccurred()
+    }
+    
     func didFinishEditing() {
         presenter.loadPosts()
     }
@@ -83,6 +91,4 @@ class PostsModuleViewController: UIViewController, PostsModuleViewInput, UITable
     func didFinishDeletingPost() {
         presenter.loadPosts()
     }
-    
-    
 }
