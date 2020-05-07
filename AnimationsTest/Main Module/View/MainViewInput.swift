@@ -47,5 +47,6 @@ protocol MainViewInput: AnyObject {
     /// tells view to finish pan animation
     func finishPanAnimation()
     
+    /// fires haptic impact
     func fireHapticImpact()
 }

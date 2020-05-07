@@ -15,6 +15,7 @@ class MainView: UIView {
     lazy var tableView: UITableView = {
         
         let tableView = UITableView()
+        tableView.accessibilityLabel = String(describing: UITableView.self)
         
         return tableView
     }()
@@ -22,6 +23,7 @@ class MainView: UIView {
     lazy var loadingIndicator: UIActivityIndicatorView = {
         
         let indicator = UIActivityIndicatorView(style: .large)
+        indicator.accessibilityLabel = String(describing: UIActivityIndicatorView.self)
         
         return indicator
     }()

@@ -46,8 +46,7 @@ class MainInteractor: MainInteractorInput {
                         // else, if data is received, tell persistent layer to save it
                         self?.realmManager.saveBatch(heroes) {
                             
-                            // when the data is saved (which could take some time becaues it is also saving images as data)
-                            // subscribe to the realm
+                            // when the data is saved, subscribe to the realm
                             DispatchQueue.main.async {
                                 
                                 self?.startObservingRealm()
@@ -79,7 +78,11 @@ class MainInteractor: MainInteractorInput {
     }
     
     //MARK: - Util
-    private func startObservingRealm() {
+    func notificationReceived(new: [HeroDto], deletions: [Int], insertions: [Int], modifications: [Int]) {
+        presenter.didReceiveUpdateNotification(new: new, deletions: deletions, insertions: insertions, modifications: modifications)
+    }
+    
+    func startObservingRealm() {
         
         realmManager.observe { [weak self] deletions, insertions, modifications in
             
@@ -88,7 +91,7 @@ class MainInteractor: MainInteractorInput {
             self?.realmManager.getAll { realmResult in
                 
                 DispatchQueue.main.async {
-                    self?.presenter.didReceiveUpdateNotification(new: realmResult, deletions: deletions, insertions: insertions, modifications: modifications)
+                    self?.notificationReceived(new: realmResult, deletions: deletions, insertions: insertions, modifications: modifications)
                 }
             }
         }
