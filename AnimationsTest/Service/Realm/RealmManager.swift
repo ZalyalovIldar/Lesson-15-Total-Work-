@@ -17,17 +17,9 @@ protocol RealmManager {
     /// gets all heroes from the realm
     func getAll(completion: @escaping ([HeroDto]) -> Void)
     
-    /// get an individual hero from the realm
-    /// - Parameter primaryKey: id of the hero
-    func get(by primaryKey: Int, completion: @escaping (HeroDto?) -> Void)
-    
     /// delete an individual hero from the realm
     /// - Parameter primaryKey: id of the hero
     func delete(by primaryKey: Int)
-    
-    /// save hero to the realm
-    /// - Parameter model: hero to save
-    func save(_ model: Hero)
     
     /// save array of heroes to the realm
     /// - Parameter models: modelds to be saved

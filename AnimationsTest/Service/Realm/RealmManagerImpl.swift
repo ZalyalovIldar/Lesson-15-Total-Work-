@@ -46,27 +46,6 @@ class RealmManagerImpl: RealmManager {
         }
     }
     
-    func get(by primaryKey: Int, completion: @escaping (HeroDto?) -> Void) {
-        
-        DispatchQueue.global(qos: .userInteractive).async {
-            
-            let realm = try! Realm()
-            
-            let object = realm.object(ofType: HeroModel.self, forPrimaryKey: primaryKey)
-            
-            guard let objectUnwrapped = object else {
-                
-                DispatchQueue.main.async {
-                    completion(.none)
-                }
-                return
-            }
-            DispatchQueue.main.async {
-                completion(objectUnwrapped.toDto())
-            }
-        }
-    }
-    
     func delete(by primaryKey: Int) {
         
         DispatchQueue.global(qos: .userInteractive).async {
@@ -78,24 +57,6 @@ class RealmManagerImpl: RealmManager {
                 try? realm.write {
                     realm.delete(objectToDelete)
                 }
-            }
-        }
-    }
-    
-    func save(_ model: Hero) {
-        
-        DispatchQueue.global(qos: .userInteractive).async {
-            
-            let realm = try! Realm()
-            
-            guard let imageUrl = URL(string: model.image), let imageData = try? Data(contentsOf: imageUrl) else { return }
-            
-            let realmModel = model.toRealmModel()
-            realmModel.imageData = imageData
-            
-            try? realm.write {
-                
-                realm.add(realmModel)
             }
         }
     }
