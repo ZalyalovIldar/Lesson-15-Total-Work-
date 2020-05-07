@@ -68,7 +68,7 @@ class ViewMock: MainViewInput {
         viewShouldUpdatePanAnimationPercentage.toggle()
     }
     
-    func finishPanAnimation(at percentage: Double) {
+    func finishPanAnimation() {
         viewShouldFinishPanAnimation.toggle()
     }
     

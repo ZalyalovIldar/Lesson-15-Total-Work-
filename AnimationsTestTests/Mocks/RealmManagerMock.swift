@@ -42,16 +42,6 @@ class RealmManagerMock: RealmManager {
         }
     }
     
-    func get(by primaryKey: Int, completion: @escaping (HeroDto?) -> Void) {
-        
-        if primaryKey == 0 {
-            completion(.none)
-        }
-        else {
-            completion(.init(id: .zero, name: String(), image: String(), imageData: .none, homeworld: String(), gender: String(), height: String(), mass: String(), species: String(), skinColor: String(), eyeColor: String()))
-        }
-    }
-    
     func delete(by primaryKey: Int) {
         
         if primaryKey != 0 {
@@ -59,17 +49,13 @@ class RealmManagerMock: RealmManager {
         }
     }
     
-    func save(_ model: Hero) {
-        
-        shouldNotifyInteractor.toggle()
-        onUpdate([], [.zero], [])
-        
-    }
-    
     func saveBatch(_ models: [Hero], completion: @escaping () -> Void) {
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
-            completion()
+        shouldNotifyInteractor.toggle()
+        completion()
+        
+        if isBeingObserved {
+            onUpdate([], [], [])
         }
     }
     

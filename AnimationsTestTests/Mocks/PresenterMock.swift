@@ -53,7 +53,7 @@ class PresenterMock: MainViewOutput, MainInteractorOutput, MainRouterOutput, Mai
         shouldCallUpdatePanAnimationPercentage.toggle()
     }
     
-    func finishPanAnimation(at percentage: Double) {
+    func finishPanAnimation() {
         shouldCallFinishPanAnimation.toggle()
     }
     

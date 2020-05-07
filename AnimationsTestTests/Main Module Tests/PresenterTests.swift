@@ -125,7 +125,7 @@ class PresenterTests: XCTestCase {
     
     func testViewShouldFinishPanAnimation() throws {
         
-        presenter.finishPanAnimation(at: .zero)
+        presenter.finishPanAnimation()
         XCTAssertTrue(view.viewShouldFinishPanAnimation)
     }
     
