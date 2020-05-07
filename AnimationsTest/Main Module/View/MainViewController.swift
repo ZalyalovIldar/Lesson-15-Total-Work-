@@ -183,9 +183,7 @@ class MainViewController: UIViewController, UITableViewDelegate, MainViewInput, 
     }
     
     func finishPanAnimation() {
-        
-        var needsBlurAtRelease = false
-        
+                
         if animateToDismiss.fractionComplete > Appearance.completionDelta {
             animateToDismiss.startAnimation()
         }
