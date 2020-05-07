@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// hero model that is obtained from api
 struct Hero: Codable {
     
     let id: Int

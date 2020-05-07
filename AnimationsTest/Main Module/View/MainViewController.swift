@@ -21,7 +21,7 @@ class MainViewController: UIViewController, UITableViewDelegate, MainViewInput, 
         
         static let estimatedCellHeight: CGFloat = 232
         
-        static let oneTapAnimationDuration = 0.5
+        static let animationDuration = 0.5
         static let endAlpha: CGFloat = 1.0
         
         static let cardWidthMultiplier: CGFloat = 0.85
@@ -276,7 +276,7 @@ class MainViewController: UIViewController, UITableViewDelegate, MainViewInput, 
         
         toFullScreenAnimator = { [unowned self] in
         
-            let animateToFullScreen = UIViewPropertyAnimator(duration: Appearance.oneTapAnimationDuration, curve: .easeOut) { [unowned self] in
+            let animateToFullScreen = UIViewPropertyAnimator(duration: Appearance.animationDuration, curve: .easeOut) { [unowned self] in
                 
                 self.detailView.frame = self.view.frame
                 self.detailView.alpha = Appearance.endAlpha
@@ -296,7 +296,7 @@ class MainViewController: UIViewController, UITableViewDelegate, MainViewInput, 
         
         toCardAnimator = { [unowned self] in
             
-            let animateToCard = UIViewPropertyAnimator(duration: Appearance.oneTapAnimationDuration, curve: .easeOut, animations: { [unowned self] in
+            let animateToCard = UIViewPropertyAnimator(duration: Appearance.animationDuration, curve: .easeOut, animations: { [unowned self] in
                 
                 self.coverView.alpha = Appearance.endAlpha
                 self.detailView.layer.cornerRadius = Appearance.cardCornerRadius
@@ -317,7 +317,7 @@ class MainViewController: UIViewController, UITableViewDelegate, MainViewInput, 
         
         toDismissAnimator = { [unowned self] in
             
-            let animateToDismiss = UIViewPropertyAnimator(duration: Appearance.oneTapAnimationDuration, curve: .easeOut) { [unowned self] in
+            let animateToDismiss = UIViewPropertyAnimator(duration: Appearance.animationDuration, curve: .easeOut) { [unowned self] in
                 
                 self.detailView.frame = CGRect(x: .zero, y: self.view.frame.height, width: self.view.frame.width, height: self.detailView.frame.height)
                 self.coverView.alpha = .zero

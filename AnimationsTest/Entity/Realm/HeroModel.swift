@@ -10,6 +10,7 @@ import Foundation
 import RealmSwift
 
 @objcMembers
+/// Hero model to store in Realm
 class HeroModel: Object {
     
     dynamic var id = 0
