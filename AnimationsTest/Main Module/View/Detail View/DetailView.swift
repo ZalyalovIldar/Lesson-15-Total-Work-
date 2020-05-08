@@ -12,7 +12,7 @@ import SDWebImage
 
 protocol DetailViewDelegate: AnyObject {
     
-    /// tells delegate that exit button was
+    /// tells delegate that exit button was pressed
     func didPressExitButton()
 }
 

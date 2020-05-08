@@ -108,6 +108,7 @@ class MainTableViewCell: UITableViewCell {
             heroImageView.image = UIImage(data: imageData)?.resizeTopAlignedToFill(newWidth: Appearance.imageViewWidth)
         }
         else {
+            
             heroImageView.sd_setImage(with: URL(string: dto.image)) { [weak self] image, _, _, _ in
                 
                 guard let self = self else { return }
@@ -117,7 +118,7 @@ class MainTableViewCell: UITableViewCell {
                     self.heroImageView.image = image?.resizeTopAlignedToFill(newWidth: self.heroImageView.frame.width)
                     
                     if let data = self.heroImageView.image?.pngData() {
-                        delegate!.didLoadImage(data: data, id: dto.id)
+                        delegate?.didLoadImage(data: data, id: dto.id)
                     }
                 }
             }

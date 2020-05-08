@@ -32,5 +32,9 @@ protocol RealmManager {
     ///   - name: new name
     func renameObject(with primaryKey: Int, new name: String)
     
+    /// tells realm manager to attach given image to the model with given primary key
+    /// - Parameters:
+    ///   - imageData: image as binary data
+    ///   - primaryKey: primary key of the model
     func saveImage(imageData: Data, primaryKey: Int)
 }

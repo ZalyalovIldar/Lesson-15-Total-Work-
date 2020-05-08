@@ -22,7 +22,8 @@ class PanDirectionGestureRecognizer: UIPanGestureRecognizer {
         self.direction = direction
         super.init(target: target, action: action)
     }
-
+    
+    /// makes gesture recognizer work in a specific direction
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent) {
         super.touchesMoved(touches, with: event)
 

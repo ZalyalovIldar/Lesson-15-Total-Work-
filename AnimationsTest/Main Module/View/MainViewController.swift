@@ -283,7 +283,7 @@ class MainViewController: UIViewController, UITableViewDelegate, MainViewInput, 
                 self.detailView.layoutIfNeeded()
             }
             
-            animateToFullScreen.addCompletion { _ in
+            animateToFullScreen.addCompletion { [unowned self] _ in
                 
                 self.detailView.mainScrollView.isScrollEnabled = true
                 self.detailView.mainScrollView.setContentOffset(CGPoint(x: .zero, y: -self.detailView.mainScrollView.adjustedContentInset.top), animated: true)
@@ -338,17 +338,14 @@ class MainViewController: UIViewController, UITableViewDelegate, MainViewInput, 
     func cleanUpAnimationRelatedObjects() {
         
         if let fullScreenAnimator = self.animateToFullScreen, fullScreenAnimator.isInterruptible {
-            
             fullScreenAnimator.stopAnimation(true)
         }
         
         if let cardAnimator = self.animateToCard, cardAnimator.isInterruptible {
-            
             cardAnimator.stopAnimation(true)
         }
         
         if let dismissAnimator = self.animateToDismiss, dismissAnimator.isInterruptible {
-            
             dismissAnimator.stopAnimation(true)
         }
         
