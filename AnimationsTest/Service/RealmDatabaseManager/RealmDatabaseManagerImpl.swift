@@ -29,7 +29,7 @@ class RealmDatabaseManagerImpl: RealmDatabaseManager {
     
     func getPosts() -> [PostDto] {
         
-        let models = realm.objects(PostModel.self)
+        let models = realm.objects(PostModel.self).sorted(byKeyPath: PostModel.primaryKey()!, ascending: true)
         var postsDto: [PostDto] = []
         
         for model in models {
@@ -49,13 +49,16 @@ class RealmDatabaseManagerImpl: RealmDatabaseManager {
         }
     }
     
-       func deletePost(post: PostDto) {
+    func deletePost(post: PostDto) {
         
-            let postModel = post.toModel()
+        let postModel = post.toModel()
+        
+        if let objectToDelete = realm.object(ofType: PostModel.self, forPrimaryKey: postModel.id) {
             
-            try! realm.write {
-                realm.delete(realm.objects(PostModel.self).filter("id=%@",postModel.id))
+            try? realm.write {
+                realm.delete(objectToDelete)
+                print("deleted")
             }
-       }
-    
+        }
+    }
 }

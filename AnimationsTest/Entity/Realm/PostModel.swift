@@ -18,8 +18,8 @@ class PostModel: Object {
     dynamic var body = String()
     dynamic var imageUrl = String()
     
-    override static func primaryKey() -> String? {
-        return Constants.modelIdKey
+    override class func primaryKey() -> String? {
+        return #keyPath(PostModel.id)
     }
 }
 

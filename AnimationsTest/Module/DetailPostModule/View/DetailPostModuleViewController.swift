@@ -21,6 +21,7 @@ class DetailPostModuleViewController: UIViewController, DetailPostModuleViewInpu
         
         titleLabel.text = post.title
         bodyTextArea.text = post.body
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: Constants.saveButtonTitle, style: .done, target: self, action: #selector(self.didPressSaveButton(_:)))
     }
