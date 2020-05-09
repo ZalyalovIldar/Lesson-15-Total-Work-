@@ -38,7 +38,7 @@ class RealmManagerMock: RealmManager {
             completion([])
         }
         else {
-            completion([HeroDto(id: 0, name: "", image: "", imageData: .none, homeworld: "", gender: "", height: "", mass: "", species: "", skinColor: "", eyeColor: "")])
+            completion([HeroDto(id: 0, name: "", bio: "", image: "", imageData: .none, homeworld: "", gender: "", height: "", mass: "", species: "", skinColor: "", eyeColor: "")])
         }
     }
     

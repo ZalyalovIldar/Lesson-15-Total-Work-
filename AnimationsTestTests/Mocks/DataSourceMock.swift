@@ -14,7 +14,7 @@ class DataSourceMock: NSObject, MainDataSourceInput {
     
     var shouldUpdateHeroesArray = false
     
-    var heroes: [HeroDto] = [HeroDto(id: 0, name: "", image: "", imageData: .none, homeworld: "", gender: "", height: "", mass: "", species: "", skinColor: "", eyeColor: "")] {
+    var heroes: [HeroDto] = [HeroDto(id: 0, name: "", bio: String(), image: "", imageData: .none, homeworld: "", gender: "", height: "", mass: "", species: "", skinColor: "", eyeColor: "")] {
         
         didSet {
             shouldUpdateHeroesArray.toggle()

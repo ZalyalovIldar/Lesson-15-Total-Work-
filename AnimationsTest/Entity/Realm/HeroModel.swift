@@ -15,6 +15,7 @@ class HeroModel: Object {
     
     dynamic var id = 0
     dynamic var name = String()
+    dynamic var bio = String()
     dynamic var image = String()
     dynamic var imageData: Data? = .none
     dynamic var homeworld: String? = .none
@@ -41,6 +42,6 @@ class HeroModel: Object {
         let dtoSkinColor = "Skin color: \(skinColor ?? "unknown")"
         let dtoEyeColor = "Eye color: \(eyeColor ?? "unknown")"
         
-        return HeroDto(id: id, name: dtoName, image: dtoImage, imageData: imageData, homeworld: dtoHome, gender: dtoGender, height: dtoHeight, mass: dtoMass, species: dtoSpecies, skinColor: dtoSkinColor, eyeColor: dtoEyeColor)
+        return HeroDto(id: id, name: dtoName, bio: bio, image: dtoImage, imageData: imageData, homeworld: dtoHome, gender: dtoGender, height: dtoHeight, mass: dtoMass, species: dtoSpecies, skinColor: dtoSkinColor, eyeColor: dtoEyeColor)
     }
 }

@@ -53,7 +53,7 @@ class ViewTests: XCTestCase {
         
         let old = view.mainView.tableView.visibleCells.count
         
-        dataSource.heroes.append(HeroDto(id: .zero, name: String(), image: String(), imageData: nil, homeworld: String(), gender: String(), height: String(), mass: String(), species: String(), skinColor: String(), eyeColor: String()))
+        dataSource.heroes.append(HeroDto(id: .zero, name: String(), bio: String(), image: String(), imageData: nil, homeworld: String(), gender: String(), height: String(), mass: String(), species: String(), skinColor: String(), eyeColor: String()))
         
         view.reloadData()
         
@@ -68,7 +68,7 @@ class ViewTests: XCTestCase {
         view.registerDataSource(dataSource)
         view.mainView.tableView.register(cell: MainTableViewCell.self)
         
-        let hero = HeroDto(id: .zero, name: String(), image: String(), imageData: nil, homeworld: String(), gender: String(), height: String(), mass: String(), species: String(), skinColor: String(), eyeColor: String())
+        let hero = HeroDto(id: .zero, name: String(), bio: String(), image: String(), imageData: nil, homeworld: String(), gender: String(), height: String(), mass: String(), species: String(), skinColor: String(), eyeColor: String())
         
         dataSource.heroes.append(hero)
         view.displayDetailView(for: hero, at: IndexPath(row: .zero, section: .zero))
@@ -81,7 +81,7 @@ class ViewTests: XCTestCase {
         view.registerDataSource(dataSource)
         view.mainView.tableView.register(cell: MainTableViewCell.self)
         
-        let hero = HeroDto(id: .zero, name: String(), image: String(), imageData: nil, homeworld: String(), gender: String(), height: String(), mass: String(), species: String(), skinColor: String(), eyeColor: String())
+        let hero = HeroDto(id: .zero, name: String(), bio: String(), image: String(), imageData: nil, homeworld: String(), gender: String(), height: String(), mass: String(), species: String(), skinColor: String(), eyeColor: String())
         
         dataSource.heroes.append(hero)
         view.displayDetailViewAsCard(for: hero, at: IndexPath(row: .zero, section: .zero))
@@ -94,7 +94,7 @@ class ViewTests: XCTestCase {
         view.registerDataSource(dataSource)
         view.mainView.tableView.register(cell: MainTableViewCell.self)
         
-        let hero = HeroDto(id: .zero, name: String(), image: String(), imageData: nil, homeworld: String(), gender: String(), height: String(), mass: String(), species: String(), skinColor: String(), eyeColor: String())
+        let hero = HeroDto(id: .zero, name: String(), bio: String(), image: String(), imageData: nil, homeworld: String(), gender: String(), height: String(), mass: String(), species: String(), skinColor: String(), eyeColor: String())
         
         dataSource.heroes.append(hero)
         view.displayDetailViewAsCard(for: hero, at: IndexPath(row: .zero, section: .zero))
@@ -121,7 +121,7 @@ class ViewTests: XCTestCase {
         view.registerDataSource(dataSource)
         view.mainView.tableView.register(cell: MainTableViewCell.self)
         
-        let hero = HeroDto(id: .zero, name: String(), image: String(), imageData: nil, homeworld: String(), gender: String(), height: String(), mass: String(), species: String(), skinColor: String(), eyeColor: String())
+        let hero = HeroDto(id: .zero, name: String(), bio: String(), image: String(), imageData: nil, homeworld: String(), gender: String(), height: String(), mass: String(), species: String(), skinColor: String(), eyeColor: String())
         
         dataSource.heroes.append(hero)
         view.displayDetailViewAsCard(for: hero, at: IndexPath(row: .zero, section: .zero))
@@ -148,7 +148,7 @@ class ViewTests: XCTestCase {
         view.registerDataSource(dataSource)
         view.mainView.tableView.register(cell: MainTableViewCell.self)
         
-        let hero = HeroDto(id: .zero, name: String(), image: String(), imageData: nil, homeworld: String(), gender: String(), height: String(), mass: String(), species: String(), skinColor: String(), eyeColor: String())
+        let hero = HeroDto(id: .zero, name: String(), bio: String(), image: String(), imageData: nil, homeworld: String(), gender: String(), height: String(), mass: String(), species: String(), skinColor: String(), eyeColor: String())
         
         dataSource.heroes.append(hero)
         view.displayDetailViewAsCard(for: hero, at: IndexPath(row: .zero, section: .zero))
@@ -181,7 +181,7 @@ class ViewTests: XCTestCase {
         view.registerDataSource(dataSource)
         view.mainView.tableView.register(cell: MainTableViewCell.self)
         
-        let hero = HeroDto(id: .zero, name: String(), image: String(), imageData: nil, homeworld: String(), gender: String(), height: String(), mass: String(), species: String(), skinColor: String(), eyeColor: String())
+        let hero = HeroDto(id: .zero, name: String(), bio: String(), image: String(), imageData: nil, homeworld: String(), gender: String(), height: String(), mass: String(), species: String(), skinColor: String(), eyeColor: String())
         
         dataSource.heroes.append(hero)
         view.displayDetailViewAsCard(for: hero, at: IndexPath(row: .zero, section: .zero))
@@ -214,7 +214,7 @@ class ViewTests: XCTestCase {
         view.registerDataSource(dataSource)
         view.mainView.tableView.register(cell: MainTableViewCell.self)
         
-        let hero = HeroDto(id: .zero, name: String(), image: String(), imageData: nil, homeworld: String(), gender: String(), height: String(), mass: String(), species: String(), skinColor: String(), eyeColor: String())
+        let hero = HeroDto(id: .zero, name: String(), bio: String(), image: String(), imageData: nil, homeworld: String(), gender: String(), height: String(), mass: String(), species: String(), skinColor: String(), eyeColor: String())
         
         dataSource.heroes.append(hero)
         view.displayDetailViewAsCard(for: hero, at: IndexPath(row: .zero, section: .zero))

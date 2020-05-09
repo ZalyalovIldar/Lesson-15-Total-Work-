@@ -18,7 +18,7 @@ class InteractorMock: MainInteractorInput {
     
     weak var presenter: MainInteractorOutput!
     
-    private var heroes = [HeroDto(id: 0, name: "", image: "", imageData: .none, homeworld: "", gender: "", height: "", mass: "", species: "", skinColor: "", eyeColor: "")]
+    private var heroes = [HeroDto(id: 0, name: "", bio: String(), image: "", imageData: .none, homeworld: "", gender: "", height: "", mass: "", species: "", skinColor: "", eyeColor: "")]
     
     func fetchAllHeroes() {
         

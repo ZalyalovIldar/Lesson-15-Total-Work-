@@ -194,7 +194,7 @@ class InteractorTests: XCTestCase {
     func testNotificationBlockActuallyInvokes() throws {
         
         interactor.startObservingRealm()
-        realmManager.saveBatch([Hero(id: .zero, name: String(), image: String(), homeworld: .none, gender: String(), height: .none, mass: .none, species: String(), skinColor: .none, eyeColor: .none)], completion: {})
+        realmManager.saveBatch([Hero(id: .zero, name: String(), bio: String(), image: String(), homeworld: .none, gender: String(), height: .none, mass: .none, species: String(), skinColor: .none, eyeColor: .none)], completion: {})
         
         let exp = expectation(description: "Should call notification block")
         

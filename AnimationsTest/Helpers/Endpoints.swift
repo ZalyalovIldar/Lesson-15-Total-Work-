@@ -11,5 +11,5 @@ import Foundation
 class Endpoints {
     
     /// get all heroes (20 in this case)
-    static let allHeroes = "https://www.mocky.io/v2/5ea5432d3000002b14ce2ead"
+    static let allHeroes = "https://www.mocky.io/v2/5eb6b03a3100007100c89fbd"
 }

@@ -18,7 +18,7 @@ class NetworkManagerSuccessMock: NetworkManager {
         shouldGetAllHeroes.toggle()
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
-            completion(.success([Hero(id: 0, name: String(), image: String(), homeworld: .none, gender: String(), height: .none, mass: .none, species: String(), skinColor: .none, eyeColor: .none)]))
+            completion(.success([Hero(id: 0, name: String(), bio: String(), image: String(), homeworld: .none, gender: String(), height: .none, mass: .none, species: String(), skinColor: .none, eyeColor: .none)]))
         }
     }
 }

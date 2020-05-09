@@ -13,6 +13,7 @@ struct HeroDto {
     
     let id: Int
     let name: String
+    let bio: String
     let image: String
     var imageData: Data?
     let homeworld: String

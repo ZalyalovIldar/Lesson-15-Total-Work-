@@ -13,6 +13,7 @@ struct Hero: Codable {
     
     let id: Int
     let name: String
+    let bio: String
     let image: String
     var homeworld: String?
     let gender: String
@@ -22,10 +23,11 @@ struct Hero: Codable {
     let skinColor: String?
     let eyeColor: String?
     
-    init(id: Int, name: String, image: String, homeworld: String?, gender: String, height: Double?, mass: Int?, species: String, skinColor: String?, eyeColor: String?) {
+    init(id: Int, name: String, bio: String, image: String, homeworld: String?, gender: String, height: Double?, mass: Int?, species: String, skinColor: String?, eyeColor: String?) {
         
         self.id = id
         self.name = name
+        self.bio = bio
         self.image = image
         self.homeworld = homeworld
         self.gender = gender
@@ -40,6 +42,7 @@ struct Hero: Codable {
         
         case id
         case name
+        case bio
         case image
         case homeworld
         case gender
@@ -54,6 +57,7 @@ struct Hero: Codable {
         
         let container = try decoder.container(keyedBy: CodingKeys.self)
         name = try container.decode(String.self, forKey: .name)
+        bio = try container.decode(String.self, forKey: .bio)
         image = try container.decode(String.self, forKey: .image)
         homeworld = try? container.decode(String.self, forKey: .homeworld)
         
@@ -83,7 +87,7 @@ struct Hero: Codable {
         let dtoSkinColor = "Skin color: \(skinColor ?? "unknown")"
         let dtoEyeColor = "Eye color: \(eyeColor ?? "unknown")"
         
-        return HeroDto(id: id, name: dtoName, image: dtoImage, imageData: .none, homeworld: dtoHome, gender: dtoGender, height: dtoHeight, mass: dtoMass, species: dtoSpecies, skinColor: dtoSkinColor, eyeColor: dtoEyeColor)
+        return HeroDto(id: id, name: dtoName, bio: bio, image: dtoImage, imageData: .none, homeworld: dtoHome, gender: dtoGender, height: dtoHeight, mass: dtoMass, species: dtoSpecies, skinColor: dtoSkinColor, eyeColor: dtoEyeColor)
     }
     
     func toRealmModel() -> HeroModel {
@@ -93,6 +97,7 @@ struct Hero: Codable {
         model.id = id
         model.name = name
         model.image = image
+        model.bio = bio
         model.imageData = .none
         model.homeworld = homeworld
         model.gender = gender
