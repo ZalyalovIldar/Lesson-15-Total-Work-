@@ -240,6 +240,7 @@ class DetailView: UIView {
         }
     }
     
+    //MARK: - Button function
     @objc func closeButtonPressed() {
         delegate?.didPressExitButton()
     }
