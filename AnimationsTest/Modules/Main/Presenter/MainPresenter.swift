@@ -34,7 +34,7 @@ class MainPresenter: MainModuleInput, MainViewOutput, MainInteractorOutput {
     }
     
     //MARK: - MainInteractorOutput
-    func didFinishGettingHeroes(with heroes: [Hero]) {
+    func didFinishGettingHeroes(with heroes: [HeroDTO]) {
         
         view.set(dataSource: dataSource)
         dataSource.heroes = heroes

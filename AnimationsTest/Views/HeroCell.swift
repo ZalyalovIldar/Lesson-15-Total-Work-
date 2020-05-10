@@ -68,7 +68,7 @@ class HeroCell: UITableViewCell {
     
     /// Method, that configure cell
     /// - Parameter hero: passed hero model
-    func configure(with hero: Hero) {
+    func configure(with hero: HeroDTO) {
         
         guard let url = URL(string: hero.image) else { return }
         

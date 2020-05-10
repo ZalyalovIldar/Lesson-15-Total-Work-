@@ -16,12 +16,11 @@ protocol MainViewInput: class {
 }
 
 protocol MainViewOutput {
-
+    
     func viewIsReady()
     var navTitle: String { get }
     func didActivateDeleteAction(at indexPath: IndexPath)
 }
-
 
 class MainViewController: UIViewController, MainViewInput {
     
@@ -50,11 +49,11 @@ class MainViewController: UIViewController, MainViewInput {
     private func initTableView() {
         
         tableView = UITableView()
+        tableView.backgroundColor = .white
         
         tableView.delegate = self        
         tableView.register(cell: HeroCell.self)
         tableView.frame = view.frame
-        
         view.addSubview(tableView)
     }
     
@@ -62,7 +61,6 @@ class MainViewController: UIViewController, MainViewInput {
     func reloadTable() {
         tableView.reloadData()
     }
-    
     
     /// Meethod to set data source to table
     /// - Parameter dataSource: datasource to be install as datasource
@@ -74,7 +72,6 @@ class MainViewController: UIViewController, MainViewInput {
     func setupInitialState() {
     }
 }
-
 
 extension MainViewController: UITableViewDelegate {
     
@@ -88,7 +85,7 @@ extension MainViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
         let renameAction = UIContextualAction(style: .normal, title: "Rename") { [weak self] _, _, completion in
-                        
+            
             completion(true)
         }
         
@@ -96,7 +93,8 @@ extension MainViewController: UITableViewDelegate {
         
         let deleteAction = UIContextualAction(style: .destructive, title: Constants.deleteButtonTitle) { [weak self] _, _, completion in
             
-            self?.output.didActivateDeleteAction(at: indexPath)
+            self?.output.didActivateDeleteAction(at: indexPath)         
+            
             completion(true)
         }
         
@@ -109,4 +107,16 @@ extension MainViewController: UITableViewDelegate {
         return configuration
     }
     
+    func tableView(_ tableView: UITableView, willPerformPreviewActionForMenuWith configuration: UIContextMenuConfiguration, animator: UIContextMenuInteractionCommitAnimating) {
+        animator.addCompletion {
+            self.show(DetailViewController(), sender: self)
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+        let config = UIContextMenuConfiguration(identifier: "\(indexPath.row)" as NSCopying, previewProvider: { () -> UIViewController? in
+            return DetailViewController()
+        }, actionProvider: nil)
+        return config
+    }
 }

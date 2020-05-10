@@ -9,7 +9,7 @@
 import UIKit
 
 protocol MainDataSourceInput: UITableViewDataSource {
-    var heroes: [Hero] {get set}
+    var heroes: [HeroDTO] {get set}
 }
 
 protocol MainDataSourceOutput {
@@ -19,7 +19,7 @@ protocol MainDataSourceOutput {
 
 class MainDataSource: NSObject, MainDataSourceInput {
     
-    var heroes: [Hero] = []
+    var heroes: [HeroDTO] = []
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return heroes.count

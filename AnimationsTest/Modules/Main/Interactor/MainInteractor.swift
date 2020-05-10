@@ -14,7 +14,7 @@ protocol MainInteractorInput {
 }
 
 protocol MainInteractorOutput: class {
-    func didFinishGettingHeroes(with heroes: [Hero])
+    func didFinishGettingHeroes(with heroes: [HeroDTO])
     func didFinishGettingHeroes(with error: Error)
 }
 
@@ -23,30 +23,38 @@ class MainInteractor: MainInteractorInput {
     weak var output: MainInteractorOutput!
     
     var networkManager: NetworkManagerProtocol!
+    var dbManager: DBManagerProtocol!
     
     func getHeroesInfo() {
-        networkManager.getHeroesInfo { [weak self] result in
-            
-            switch result {
-                
-            case .failure(let error):
-                
-                DispatchQueue.main.async {
-                    self?.output.didFinishGettingHeroes(with: error)
+        
+        dbManager.fetchAllHeroes { [weak self] heroes in
+            if !heroes.isEmpty {
+                self?.output.didFinishGettingHeroes(with: heroes)
+            } else {
+                self?.networkManager.getHeroesInfo { result in
+                    
+                    switch result {
+                        
+                    case .failure(let error):
+                        
+                        DispatchQueue.main.async {
+                            self?.output.didFinishGettingHeroes(with: error)
+                        }
+                        
+                    case .success(let heroes):
+                        
+                        self?.dbManager.saveArray(of: heroes)
+                        
+                        DispatchQueue.main.async {
+                            self?.output.didFinishGettingHeroes(with: heroes.map({ $0.convertDTO() }))
+                        }
+                    }
                 }
-                
-            case .success(let heroes):
-                
-                DispatchQueue.main.async {
-                    self?.output.didFinishGettingHeroes(with: heroes)
-                }
-                
             }
         }
     }
     
     func deleteHero(at index: Int) {
-        print("Deleted")
+        dbManager.deleteHero(with: index)
     }
-    
 }

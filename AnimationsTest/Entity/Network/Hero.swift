@@ -61,4 +61,37 @@ struct Hero: Codable {
             return
         }
     }
+    
+    func convertDTO() -> HeroDTO {
+        
+        let heightDTO = height ?? 0
+        let massDTO = mass ?? 0
+        let eyeColorDTO = eyeColor ?? "No eye color"
+        let skinColorDTO = skinColor ?? "No skin color"
+        let hairColorDTO = hairColor ?? "No hair color"
+        let homeworldDTO = homeworld ?? "No homeworld"
+        
+        return HeroDTO(id: id, name: name, height: heightDTO, mass: massDTO, gender: gender, homeworld: homeworldDTO, wiki: wiki, image: image, imageData: nil, species: species, hairColor: hairColorDTO, eyeColor: eyeColorDTO, skinColor: skinColorDTO)        
+    }
+    
+    func convertToRealmModel() -> RealmHero {
+        let hero = RealmHero()
+        
+        hero.id = id
+        hero.name = name
+        hero.height.value = height
+        hero.mass.value = mass
+        hero.gender = gender
+        hero.homeworld = homeworld
+        hero.wiki = wiki
+        hero.image = image
+        hero.imageData = .none
+        hero.species = species
+        hero.hairColor = hairColor
+        hero.eyeColor = eyeColor
+        hero.skinColor = skinColor
+        
+        return hero
+    }
+    
 }

@@ -24,11 +24,13 @@ class MainModuleConfigurator {
         let router = MainRouter()
         let dataSource = MainDataSource()
         let networkManager = NetworkManager()
+        let dbManager = DBManager()
         
         viewController.output = presenter
         
         interactor.output = presenter
         interactor.networkManager = networkManager
+        interactor.dbManager = dbManager
         
         presenter.view = viewController
         presenter.interactor = interactor

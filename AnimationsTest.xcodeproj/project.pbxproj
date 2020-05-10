@@ -21,6 +21,10 @@
 		29D80A3F2461FE4F005A250D /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D80A3E2461FE4F005A250D /* UITableView+Extension.swift */; };
 		29D80A41246204AB005A250D /* MainDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D80A40246204AB005A250D /* MainDataSource.swift */; };
 		29D80A4324620E7D005A250D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29D80A4224620E7D005A250D /* Constants.swift */; };
+		29DAA8D024647DEC0029162A /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DAA8CF24647DEC0029162A /* DetailViewController.swift */; };
+		29E7537C24633BA700627CBB /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E7537B24633BA700627CBB /* DBManager.swift */; };
+		29E7537E24633F8C00627CBB /* HeroDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E7537D24633F8C00627CBB /* HeroDTO.swift */; };
+		29E75380246342D500627CBB /* RealmHero.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29E7537F246342D500627CBB /* RealmHero.swift */; };
 		4684AA1369043360BECD753A /* MainPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95221F9B005241B66AD16B45 /* MainPresenterTests.swift */; };
 		561E1AE0A64DB6F127A69846 /* MainInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2DA07C8380A8999E2C5879 /* MainInteractorTests.swift */; };
 		76D8A98983598E4F6D2FE3E6 /* Pods_AnimationsTestTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 082AA56C1E7C83BA5C229E33 /* Pods_AnimationsTestTests.framework */; };
@@ -60,6 +64,10 @@
 		29D80A3E2461FE4F005A250D /* UITableView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
 		29D80A40246204AB005A250D /* MainDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainDataSource.swift; sourceTree = "<group>"; };
 		29D80A4224620E7D005A250D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		29DAA8CF24647DEC0029162A /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		29E7537B24633BA700627CBB /* DBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
+		29E7537D24633F8C00627CBB /* HeroDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroDTO.swift; sourceTree = "<group>"; };
+		29E7537F246342D500627CBB /* RealmHero.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmHero.swift; sourceTree = "<group>"; };
 		2B7CBD58F5B1C5FF00825324 /* Pods-AnimationsTestTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnimationsTestTests.debug.xcconfig"; path = "Target Support Files/Pods-AnimationsTestTests/Pods-AnimationsTestTests.debug.xcconfig"; sourceTree = "<group>"; };
 		3E2AF0E30C508B1D3B2EE073 /* MainConfiguratorTests.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = MainConfiguratorTests.swift; sourceTree = "<group>"; };
 		4297E86108A83B9AA8A0FFE7 /* Pods-AnimationsTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnimationsTest.release.xcconfig"; path = "Target Support Files/Pods-AnimationsTest/Pods-AnimationsTest.release.xcconfig"; sourceTree = "<group>"; };
@@ -142,6 +150,7 @@
 		29D80A252461F96B005A250D /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				29E7537A24633B7100627CBB /* Database */,
 				29D80A322461FD93005A250D /* Network */,
 			);
 			path = Managers;
@@ -166,7 +175,9 @@
 		29D80A2A2461FD73005A250D /* Entity */ = {
 			isa = PBXGroup;
 			children = (
-				29D80A2B2461FD73005A250D /* Hero.swift */,
+				29E753832463459500627CBB /* Network */,
+				29E753822463458F00627CBB /* DTO */,
+				29E753812463458100627CBB /* Realm */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -189,6 +200,38 @@
 				29D80A352461FDC9005A250D /* UIStackView+Extension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		29E7537A24633B7100627CBB /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				29E7537B24633BA700627CBB /* DBManager.swift */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
+		29E753812463458100627CBB /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				29E7537F246342D500627CBB /* RealmHero.swift */,
+			);
+			path = Realm;
+			sourceTree = "<group>";
+		};
+		29E753822463458F00627CBB /* DTO */ = {
+			isa = PBXGroup;
+			children = (
+				29E7537D24633F8C00627CBB /* HeroDTO.swift */,
+			);
+			path = DTO;
+			sourceTree = "<group>";
+		};
+		29E753832463459500627CBB /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				29D80A2B2461FD73005A250D /* Hero.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		3BBE382E74D2C44295054FFD /* ModuleTests */ = {
@@ -220,6 +263,7 @@
 			isa = PBXGroup;
 			children = (
 				B119BD8364310FF4210E62FE /* Main */,
+				29DAA8CF24647DEC0029162A /* DetailViewController.swift */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -524,14 +568,18 @@
 				29D80A2F2461FD73005A250D /* NetworkManager.swift in Sources */,
 				CC1F3158D4033CD787948CF7 /* MainViewController.swift in Sources */,
 				29D80A362461FDC9005A250D /* UIImageView+Extension.swift in Sources */,
+				29E7537E24633F8C00627CBB /* HeroDTO.swift in Sources */,
 				7FBA72EE5CE43E0EA3E616D2 /* MainPresenter.swift in Sources */,
+				29DAA8D024647DEC0029162A /* DetailViewController.swift in Sources */,
 				18A3B270ED34BB971CDAFA20 /* MainInteractor.swift in Sources */,
 				D83C5BAFB2CE628FE278FD7F /* MainRouter.swift in Sources */,
 				BF4E84692C1A1A87284CD177 /* MainConfigurator.swift in Sources */,
+				29E75380246342D500627CBB /* RealmHero.swift in Sources */,
 				29D80A372461FDC9005A250D /* UILabel+Extension.swift in Sources */,
 				29D80A3D2461FE28005A250D /* UIFont+Extension.swift in Sources */,
 				29D80A302461FD73005A250D /* Hero.swift in Sources */,
 				29D80A41246204AB005A250D /* MainDataSource.swift in Sources */,
+				29E7537C24633BA700627CBB /* DBManager.swift in Sources */,
 				29D80A4324620E7D005A250D /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -693,6 +741,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = M2992GT752;
 				INFOPLIST_FILE = AnimationsTest/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -712,6 +761,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = M2992GT752;
 				INFOPLIST_FILE = AnimationsTest/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
