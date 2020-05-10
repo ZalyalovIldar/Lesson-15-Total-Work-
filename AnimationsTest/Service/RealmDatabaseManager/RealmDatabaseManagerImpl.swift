@@ -45,7 +45,6 @@ class RealmDatabaseManagerImpl: RealmDatabaseManager {
         
         try! realm.write {
             realm.add(postModel, update: .all)
-            print("Model updated")
         }
     }
     
@@ -57,7 +56,6 @@ class RealmDatabaseManagerImpl: RealmDatabaseManager {
             
             try? realm.write {
                 realm.delete(objectToDelete)
-                print("deleted")
             }
         }
     }

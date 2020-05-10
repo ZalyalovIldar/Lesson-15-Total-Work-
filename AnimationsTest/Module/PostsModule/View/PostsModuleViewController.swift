@@ -28,13 +28,23 @@ class PostsModuleViewController: UIViewController, PostsModuleViewInput, UITable
     
     var presenter: PostsModuleViewOutput!
     var posts: [PostDto] = []
-    var hapticFeedbackGenerator = UIImpactFeedbackGenerator(style: .light)
-    
+    var lightHapticFeedbackGenerator = UIImpactFeedbackGenerator(style: .light)
+    var heavyHapticFeedbackGenerator = UIImpactFeedbackGenerator(style: .heavy)
     var blurEffect: UIBlurEffect!
     var visualEffectView: UIVisualEffectView!
-    
     var detailsView: CustomDetailsUIView!
     var animator: UIViewPropertyAnimator!
+    
+    let halfOfSecondDuration = 0.5
+    let fullAlpha: CGFloat = 1
+    let zeroAlpha: CGFloat = 0
+    let ratio: CGFloat = 1.5
+    let ratioDivider: CGFloat = 4
+    let cornerRadius: CGFloat = 15
+    let heightDivider: CGFloat = 2
+    let zero: CGFloat = 0
+    let reverseMultiplier: CGFloat = -1
+    let zeroDurationFactor: CGFloat = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,11 +58,11 @@ class PostsModuleViewController: UIViewController, PostsModuleViewInput, UITable
         
         presenter.loadPosts()
         
-        animator = UIViewPropertyAnimator(duration: 0.5, curve: .linear)
+        animator = UIViewPropertyAnimator(duration: halfOfSecondDuration, curve: .linear)
         detailsView = CustomDetailsUIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
         
         let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
-        longPressGesture.minimumPressDuration = 0.5
+        longPressGesture.minimumPressDuration = halfOfSecondDuration
         self.postsTableView.addGestureRecognizer(longPressGesture)
     }
     
@@ -112,6 +122,9 @@ class PostsModuleViewController: UIViewController, PostsModuleViewInput, UITable
         
         postsTableView.deselectRow(at: indexPath, animated: true)
         
+        lightHapticFeedbackGenerator.prepare()
+        lightHapticFeedbackGenerator.impactOccurred()
+        
         let rectInTableView = tableView.rectForRow(at: indexPath)
         let rectInSuperView = tableView.superview?.convert(rectInTableView, from: tableView)
         
@@ -122,7 +135,7 @@ class PostsModuleViewController: UIViewController, PostsModuleViewInput, UITable
         
         animator.addAnimations {
             self.detailsView.frame = UIScreen.main.bounds
-            self.detailsView.alpha = 1
+            self.detailsView.alpha = self.fullAlpha
         }
         
         animator.addCompletion { (position) in
@@ -146,14 +159,16 @@ class PostsModuleViewController: UIViewController, PostsModuleViewInput, UITable
         let indexPath = self.postsTableView.indexPathForRow(at: p)
         if (indexPath != nil) && (longPressGesture.state == UIGestureRecognizer.State.began) {
             
+            heavyHapticFeedbackGenerator.prepare()
+            heavyHapticFeedbackGenerator.impactOccurred()
+            
             let rectInTableView = postsTableView.rectForRow(at: indexPath!)
             let rectInSuperView = postsTableView.superview?.convert(rectInTableView, from: postsTableView)
             
-            hapticFeedbackGenerator.prepare()
-            hapticFeedbackGenerator.impactOccurred()
-            
-            let middleRect = CGRect(x: (UIScreen.main.bounds.size.width / 1.5) / 4, y: (UIScreen.main.bounds.size.height / 1.5) / 4, width: UIScreen.main.bounds.size.width / 1.5, height: UIScreen.main.bounds.size.height / 1.5)
+            let middleRect = CGRect(x: (UIScreen.main.bounds.size.width / ratio) / ratioDivider, y: (UIScreen.main.bounds.size.height / ratio) / ratioDivider, width: UIScreen.main.bounds.size.width / ratio, height: UIScreen.main.bounds.size.height / ratio)
             detailsView = CustomDetailsUIView(frame: middleRect)
+            detailsView.closeButton.isHidden = true
+            detailsView.scrollView.isScrollEnabled = false
             configureDetailsView(view: detailsView)
             detailsView.configure(with: posts[indexPath!.row], delegate: self)
             detailsView.initialFrame = rectInSuperView
@@ -163,8 +178,8 @@ class PostsModuleViewController: UIViewController, PostsModuleViewInput, UITable
             
             animator.addAnimations {
                 self.detailsView.layer.masksToBounds = true
-                self.detailsView.layer.cornerRadius = 15
-                self.detailsView.alpha = 1
+                self.detailsView.layer.cornerRadius = self.cornerRadius
+                self.detailsView.alpha = self.fullAlpha
             }
             
             animator.addCompletion { (position) in
@@ -183,51 +198,56 @@ class PostsModuleViewController: UIViewController, PostsModuleViewInput, UITable
     @objc func didPan(_ panGesture: UIPanGestureRecognizer) {
         
         let translation = panGesture.translation(in: self.detailsView)
-        let final = view.bounds.height / 2
+        let final = view.bounds.height / heightDivider
         var currentYTranslation = -translation.y
-
+        
         switch panGesture.state {
-
+            
         case .began:
             
-            if (currentYTranslation > 0) {
+            let contentOffset = detailsView.scrollView.contentOffset.y
+            
+            if (currentYTranslation > zero) {
                 activateExpandAnimation()
-            } else if (currentYTranslation < 0){
+            } else if ((currentYTranslation < zero) && (contentOffset <= zero)) {
                 activateCloseAnimation()
             }
             
             animator.pauseAnimation()
         case .changed:
             
-            if (currentYTranslation < 0) {
-                currentYTranslation *= -1
+            if (currentYTranslation < zero) {
+                currentYTranslation *= reverseMultiplier
             }
             animator.fractionComplete = currentYTranslation / final
             break
-
+            
         case .ended:
             
-            animator.continueAnimation(withTimingParameters: nil, durationFactor: 0)
+            animator.continueAnimation(withTimingParameters: nil, durationFactor: zeroDurationFactor)
             break
-
+            
         default: break
         }
     }
     
     private func configureDetailsView(view: UIView) {
         
-//        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(didPan(_:)))
-//        panGestureRecognizer.delegate = detailsView
-//        detailsView.scrollView.addGestureRecognizer(panGestureRecognizer)
-//
-//        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTap))
-//        detailsView.addGestureRecognizer(tapGestureRecognizer)
+        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(didPan(_:)))
+        panGestureRecognizer.delegate = detailsView
+        detailsView.scrollView.addGestureRecognizer(panGestureRecognizer)
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTap))
+        tapGestureRecognizer.delegate = detailsView
+        detailsView.scrollView.addGestureRecognizer(tapGestureRecognizer)
     }
     
     private func activateExpandAnimation() {
         
         if (detailsView.currentState == .middleState) {
             
+            detailsView.scrollView.isScrollEnabled = true
+            detailsView.closeButton.isHidden = false
             animator.addAnimations {
                 self.detailsView.frame = UIScreen.main.bounds
             }
@@ -245,7 +265,7 @@ class PostsModuleViewController: UIViewController, PostsModuleViewInput, UITable
         animator.addAnimations {
             
             self.detailsView.frame = self.detailsView.initialFrame
-            self.detailsView.alpha = 0
+            self.detailsView.alpha = self.zeroAlpha
         }
         
         animator.addCompletion { (position) in

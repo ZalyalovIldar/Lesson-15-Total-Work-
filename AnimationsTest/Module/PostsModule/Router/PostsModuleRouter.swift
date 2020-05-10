@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class PostModuleRouter: PostModuleRouterInput {
+class PostsModuleRouter: PostsModuleRouterInput {
     
     weak var view: UIViewController!
     

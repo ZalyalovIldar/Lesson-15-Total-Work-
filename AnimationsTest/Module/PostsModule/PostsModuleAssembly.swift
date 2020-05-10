@@ -20,7 +20,7 @@ class PostsModuleAssembly: NSObject {
         
         let presenter = PostsModulePresenter()
         let interactor = PostsModuleInteractor()
-        let router = PostModuleRouter()
+        let router = PostsModuleRouter()
         let networkManager = NetworkManagerImpl()
         let databaseManager = RealmDatabaseManagerImpl()
         

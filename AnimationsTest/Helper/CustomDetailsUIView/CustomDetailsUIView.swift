@@ -8,13 +8,18 @@
 
 import UIKit
 
-class CustomDetailsUIView: UIView, UIGestureRecognizerDelegate {
+class CustomDetailsUIView: UIView, UIGestureRecognizerDelegate, UIScrollViewDelegate {
     
     @IBOutlet weak var postImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var bodyLabel: UILabel!
+    @IBOutlet weak var closeButton: UIButton!
     
     let nibName = "CustomDetailsUIView"
+    let zeroAlpha = 0
+    let halfSecondDuration = 0.5
+    
     var contentView: UIView?
     var currentState = States.initState
     var superviewDelegate: PostsModuleViewContorllerCloseDetailsView!
@@ -29,30 +34,35 @@ class CustomDetailsUIView: UIView, UIGestureRecognizerDelegate {
     }
     
     required init?(coder aDecoder: NSCoder) {
-            super.init(coder: aDecoder)
-            commonInit()
-        }
+        
+        super.init(coder: aDecoder)
+        commonInit()
+    }
     
-        override init(frame: CGRect) {
-            super.init(frame: frame)
-            commonInit()
-            self.alpha = 0
-            self.backgroundColor = UIColor.white
-            self.initialFrame = frame
-        }
+    override init(frame: CGRect) {
+        
+        super.init(frame: frame)
+        commonInit()
+        self.alpha = CGFloat(zeroAlpha)
+        self.backgroundColor = UIColor.white
+        self.initialFrame = frame
+    }
     
-        func commonInit() {
-            guard let view = loadViewFromNib() else { return }
-            view.frame = self.bounds
-            self.addSubview(view)
-            contentView = view
-        }
+    func commonInit() {
+        
+        guard let view = loadViewFromNib() else { return }
+        view.frame = self.bounds
+        self.addSubview(view)
+        contentView = view
+        postImageView.accessibilityIdentifier = Constants.detailViewImageAccecibilityIdentifier
+    }
     
-        func loadViewFromNib() -> UIView? {
-            let bundle = Bundle(for: type(of: self))
-            let nib = UINib(nibName: nibName, bundle: bundle)
-            return nib.instantiate(withOwner: self, options: nil).first as? UIView
-        }
+    func loadViewFromNib() -> UIView? {
+        
+        let bundle = Bundle(for: type(of: self))
+        let nib = UINib(nibName: nibName, bundle: bundle)
+        return nib.instantiate(withOwner: self, options: nil).first as? UIView
+    }
     
     func configure(with post: PostDto, delegate: PostsModuleViewContorllerCloseDetailsView) {
         
@@ -64,11 +74,24 @@ class CustomDetailsUIView: UIView, UIGestureRecognizerDelegate {
     
     func close() {
         
-        let animator = UIViewPropertyAnimator(duration: 0.5, curve: .linear) {
+        let animator = UIViewPropertyAnimator(duration: halfSecondDuration, curve: .linear) {
             self.frame = self.initialFrame
-            self.alpha = 0
+            self.alpha = CGFloat(self.zeroAlpha)
         }
         animator.startAnimation()
         superviewDelegate.didCloseDetailsView()
+    }
+    
+    func scrollViewDidScrollToTop(_ scrollView: UIScrollView) {
+        
+        if self.currentState == .middleState {
+            scrollView.isScrollEnabled = false
+        } else {
+            scrollView.isScrollEnabled = true
+        }
+    }
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
     }
 }

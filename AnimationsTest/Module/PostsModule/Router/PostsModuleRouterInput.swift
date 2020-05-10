@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol PostModuleRouterInput {
+protocol PostsModuleRouterInput {
     
     func editButtonPressed(for post: PostDto)
 }

@@ -9,10 +9,11 @@
 import UIKit
 
 class DetailPostModuleViewController: UIViewController, DetailPostModuleViewInput {
-
+    
     var post: PostDto!
     var presenter: DetailPostModuleViewOutput!
     var delegate: PostsModuleViewControllerEditingProtocol!
+    
     @IBOutlet weak var bodyTextArea: UITextView!
     @IBOutlet weak var titleLabel: UILabel!
     
@@ -25,7 +26,7 @@ class DetailPostModuleViewController: UIViewController, DetailPostModuleViewInpu
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: Constants.saveButtonTitle, style: .done, target: self, action: #selector(self.didPressSaveButton(_:)))
     }
-        
+    
     @objc func didPressSaveButton(_ sender: Any) {
         
         if post.body == bodyTextArea.text {
@@ -36,7 +37,7 @@ class DetailPostModuleViewController: UIViewController, DetailPostModuleViewInpu
             presenter.didPressSaveButton(on: post, isChanged: true, delegate: delegate)
         }
     }
-        
+    
     func configure(with post: PostDto) {
         self.post = post
     }

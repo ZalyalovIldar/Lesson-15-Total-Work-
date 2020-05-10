@@ -18,6 +18,22 @@
 		FA0F0D2324649F0A0062C77D /* CustomDetailsUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0F0D2224649F0A0062C77D /* CustomDetailsUIView.swift */; };
 		FA0F0D252464A8580062C77D /* CustomDetailsUIView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA0F0D242464A8580062C77D /* CustomDetailsUIView.xib */; };
 		FA31532D245EDB3A004360E4 /* PostsModuleAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA31532C245EDB3A004360E4 /* PostsModuleAssembly.swift */; };
+		FA37EE9B24684C46003B6519 /* PostsModuleInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA37EE9A24684C46003B6519 /* PostsModuleInteractorTests.swift */; };
+		FA37EE9D24684CAE003B6519 /* DatabaseManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA37EE9C24684CAE003B6519 /* DatabaseManagerMock.swift */; };
+		FA37EE9F24684D3E003B6519 /* NetworkManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA37EE9E24684D3E003B6519 /* NetworkManagerMock.swift */; };
+		FA37EEA52468529A003B6519 /* DetailPostPresenterMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA37EEA42468529A003B6519 /* DetailPostPresenterMock.swift */; };
+		FA37EEA724685319003B6519 /* DetailPostModuleInteractorMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA37EEA624685319003B6519 /* DetailPostModuleInteractorMock.swift */; };
+		FA37EEA92468536B003B6519 /* DetailPostModuleRouterMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA37EEA82468536B003B6519 /* DetailPostModuleRouterMock.swift */; };
+		FA37EEAB246853C6003B6519 /* DetailPostModulePresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA37EEAA246853C6003B6519 /* DetailPostModulePresenterTests.swift */; };
+		FA37EEAD24685711003B6519 /* DetailPostModuleInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA37EEAC24685711003B6519 /* DetailPostModuleInteractorTests.swift */; };
+		FA37EEAF246858D2003B6519 /* DetailPostModuleRouterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA37EEAE246858D2003B6519 /* DetailPostModuleRouterTests.swift */; };
+		FA37EEB724685DCC003B6519 /* AnimationsTestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA37EEB624685DCC003B6519 /* AnimationsTestUITests.swift */; };
+		FA556EC3246836300003FDD4 /* PostsModuleViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA556EC2246836300003FDD4 /* PostsModuleViewTests.swift */; };
+		FA556EC524683C370003FDD4 /* PostsModulePresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA556EC424683C370003FDD4 /* PostsModulePresenterTests.swift */; };
+		FA556EC82468404C0003FDD4 /* PostsModuleRouterMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA556EC72468404C0003FDD4 /* PostsModuleRouterMock.swift */; };
+		FA556ECA246841CA0003FDD4 /* PostsModuleInteractorMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA556EC9246841CA0003FDD4 /* PostsModuleInteractorMock.swift */; };
+		FA556ECC246844630003FDD4 /* PostsModuleViewMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA556ECB246844630003FDD4 /* PostsModuleViewMock.swift */; };
+		FA556ECE246846F10003FDD4 /* PostsModulePresenterMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA556ECD246846F10003FDD4 /* PostsModulePresenterMock.swift */; };
 		FA57B7BA2462C2F400FD0913 /* PostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA57B7B92462C2F400FD0913 /* PostModel.swift */; };
 		FA57B7BD2462C46F00FD0913 /* RealmDatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA57B7BC2462C46F00FD0913 /* RealmDatabaseManager.swift */; };
 		FA57B7BF2462C49100FD0913 /* RealmDatabaseManagerImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA57B7BE2462C49100FD0913 /* RealmDatabaseManagerImpl.swift */; };
@@ -31,8 +47,8 @@
 		FA57B7D42462D24B00FD0913 /* DetailPostModuleAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA57B7D32462D24B00FD0913 /* DetailPostModuleAssembly.swift */; };
 		FA57B7D62462D5B300FD0913 /* DetailPostModuleRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA57B7D52462D5B300FD0913 /* DetailPostModuleRouter.swift */; };
 		FA57B7D82462D5C300FD0913 /* DetailPostModuleRouterInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA57B7D72462D5C300FD0913 /* DetailPostModuleRouterInput.swift */; };
-		FA57B7DA2462DA7000FD0913 /* PostModuleRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA57B7D92462DA7000FD0913 /* PostModuleRouter.swift */; };
-		FA57B7DC2462DA8400FD0913 /* PostModuleRouterInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA57B7DB2462DA8400FD0913 /* PostModuleRouterInput.swift */; };
+		FA57B7DA2462DA7000FD0913 /* PostsModuleRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA57B7D92462DA7000FD0913 /* PostsModuleRouter.swift */; };
+		FA57B7DC2462DA8400FD0913 /* PostsModuleRouterInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA57B7DB2462DA8400FD0913 /* PostsModuleRouterInput.swift */; };
 		FAFE6A1F245ECB0C006C7107 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFE6A1E245ECB0C006C7107 /* CustomTableViewCell.swift */; };
 		FAFE6A21245ECBB1006C7107 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFE6A20245ECBB1006C7107 /* Constants.swift */; };
 		FAFE6A24245ECC06006C7107 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAFE6A23245ECC06006C7107 /* Post.swift */; };
@@ -52,6 +68,13 @@
 
 /* Begin PBXContainerItemProxy section */
 		7CBDFBEB24447FB600259A8B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7CBDFBCC24447FB500259A8B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7CBDFBD324447FB500259A8B;
+			remoteInfo = AnimationsTest;
+		};
+		FA37EEB924685DCC003B6519 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7CBDFBCC24447FB500259A8B /* Project object */;
 			proxyType = 1;
@@ -80,6 +103,24 @@
 		FA0F0D2224649F0A0062C77D /* CustomDetailsUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDetailsUIView.swift; sourceTree = "<group>"; };
 		FA0F0D242464A8580062C77D /* CustomDetailsUIView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomDetailsUIView.xib; sourceTree = "<group>"; };
 		FA31532C245EDB3A004360E4 /* PostsModuleAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsModuleAssembly.swift; sourceTree = "<group>"; };
+		FA37EE9A24684C46003B6519 /* PostsModuleInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsModuleInteractorTests.swift; sourceTree = "<group>"; };
+		FA37EE9C24684CAE003B6519 /* DatabaseManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManagerMock.swift; sourceTree = "<group>"; };
+		FA37EE9E24684D3E003B6519 /* NetworkManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerMock.swift; sourceTree = "<group>"; };
+		FA37EEA42468529A003B6519 /* DetailPostPresenterMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPostPresenterMock.swift; sourceTree = "<group>"; };
+		FA37EEA624685319003B6519 /* DetailPostModuleInteractorMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPostModuleInteractorMock.swift; sourceTree = "<group>"; };
+		FA37EEA82468536B003B6519 /* DetailPostModuleRouterMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPostModuleRouterMock.swift; sourceTree = "<group>"; };
+		FA37EEAA246853C6003B6519 /* DetailPostModulePresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPostModulePresenterTests.swift; sourceTree = "<group>"; };
+		FA37EEAC24685711003B6519 /* DetailPostModuleInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPostModuleInteractorTests.swift; sourceTree = "<group>"; };
+		FA37EEAE246858D2003B6519 /* DetailPostModuleRouterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPostModuleRouterTests.swift; sourceTree = "<group>"; };
+		FA37EEB424685DCC003B6519 /* AnimationsTestUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AnimationsTestUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA37EEB624685DCC003B6519 /* AnimationsTestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationsTestUITests.swift; sourceTree = "<group>"; };
+		FA37EEB824685DCC003B6519 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA556EC2246836300003FDD4 /* PostsModuleViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsModuleViewTests.swift; sourceTree = "<group>"; };
+		FA556EC424683C370003FDD4 /* PostsModulePresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsModulePresenterTests.swift; sourceTree = "<group>"; };
+		FA556EC72468404C0003FDD4 /* PostsModuleRouterMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsModuleRouterMock.swift; sourceTree = "<group>"; };
+		FA556EC9246841CA0003FDD4 /* PostsModuleInteractorMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsModuleInteractorMock.swift; sourceTree = "<group>"; };
+		FA556ECB246844630003FDD4 /* PostsModuleViewMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsModuleViewMock.swift; sourceTree = "<group>"; };
+		FA556ECD246846F10003FDD4 /* PostsModulePresenterMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsModulePresenterMock.swift; sourceTree = "<group>"; };
 		FA57B7B92462C2F400FD0913 /* PostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModel.swift; sourceTree = "<group>"; };
 		FA57B7BC2462C46F00FD0913 /* RealmDatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDatabaseManager.swift; sourceTree = "<group>"; };
 		FA57B7BE2462C49100FD0913 /* RealmDatabaseManagerImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDatabaseManagerImpl.swift; sourceTree = "<group>"; };
@@ -93,8 +134,8 @@
 		FA57B7D32462D24B00FD0913 /* DetailPostModuleAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPostModuleAssembly.swift; sourceTree = "<group>"; };
 		FA57B7D52462D5B300FD0913 /* DetailPostModuleRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPostModuleRouter.swift; sourceTree = "<group>"; };
 		FA57B7D72462D5C300FD0913 /* DetailPostModuleRouterInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPostModuleRouterInput.swift; sourceTree = "<group>"; };
-		FA57B7D92462DA7000FD0913 /* PostModuleRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModuleRouter.swift; sourceTree = "<group>"; };
-		FA57B7DB2462DA8400FD0913 /* PostModuleRouterInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostModuleRouterInput.swift; sourceTree = "<group>"; };
+		FA57B7D92462DA7000FD0913 /* PostsModuleRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsModuleRouter.swift; sourceTree = "<group>"; };
+		FA57B7DB2462DA8400FD0913 /* PostsModuleRouterInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsModuleRouterInput.swift; sourceTree = "<group>"; };
 		FAFE6A1E245ECB0C006C7107 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		FAFE6A20245ECBB1006C7107 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		FAFE6A23245ECC06006C7107 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
@@ -129,6 +170,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FA37EEB124685DCC003B6519 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -148,6 +196,7 @@
 			children = (
 				7CBDFBD624447FB500259A8B /* AnimationsTest */,
 				7CBDFBED24447FB600259A8B /* AnimationsTestTests */,
+				FA37EEB524685DCC003B6519 /* AnimationsTestUITests */,
 				7CBDFBD524447FB500259A8B /* Products */,
 				4A15535D359C7C9B2A66FE58 /* Pods */,
 				8898EBA07F6BDF0F8B102FD2 /* Frameworks */,
@@ -159,6 +208,7 @@
 			children = (
 				7CBDFBD424447FB500259A8B /* AnimationsTest.app */,
 				7CBDFBEA24447FB600259A8B /* AnimationsTestTests.xctest */,
+				FA37EEB424685DCC003B6519 /* AnimationsTestUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -183,6 +233,8 @@
 		7CBDFBED24447FB600259A8B /* AnimationsTestTests */ = {
 			isa = PBXGroup;
 			children = (
+				FA556EC6246840260003FDD4 /* Mock */,
+				FA556EC1246835F70003FDD4 /* PostsModuleTests */,
 				7CBDFBEE24447FB600259A8B /* AnimationsTestTests.swift */,
 				7CBDFBF024447FB600259A8B /* Info.plist */,
 			);
@@ -205,6 +257,44 @@
 				FA0F0D242464A8580062C77D /* CustomDetailsUIView.xib */,
 			);
 			path = CustomDetailsUIView;
+			sourceTree = "<group>";
+		};
+		FA37EEB524685DCC003B6519 /* AnimationsTestUITests */ = {
+			isa = PBXGroup;
+			children = (
+				FA37EEB624685DCC003B6519 /* AnimationsTestUITests.swift */,
+				FA37EEB824685DCC003B6519 /* Info.plist */,
+			);
+			path = AnimationsTestUITests;
+			sourceTree = "<group>";
+		};
+		FA556EC1246835F70003FDD4 /* PostsModuleTests */ = {
+			isa = PBXGroup;
+			children = (
+				FA556EC2246836300003FDD4 /* PostsModuleViewTests.swift */,
+				FA556EC424683C370003FDD4 /* PostsModulePresenterTests.swift */,
+				FA37EE9A24684C46003B6519 /* PostsModuleInteractorTests.swift */,
+				FA37EEAA246853C6003B6519 /* DetailPostModulePresenterTests.swift */,
+				FA37EEAC24685711003B6519 /* DetailPostModuleInteractorTests.swift */,
+				FA37EEAE246858D2003B6519 /* DetailPostModuleRouterTests.swift */,
+			);
+			path = PostsModuleTests;
+			sourceTree = "<group>";
+		};
+		FA556EC6246840260003FDD4 /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				FA556EC72468404C0003FDD4 /* PostsModuleRouterMock.swift */,
+				FA556EC9246841CA0003FDD4 /* PostsModuleInteractorMock.swift */,
+				FA556ECB246844630003FDD4 /* PostsModuleViewMock.swift */,
+				FA556ECD246846F10003FDD4 /* PostsModulePresenterMock.swift */,
+				FA37EE9C24684CAE003B6519 /* DatabaseManagerMock.swift */,
+				FA37EE9E24684D3E003B6519 /* NetworkManagerMock.swift */,
+				FA37EEA42468529A003B6519 /* DetailPostPresenterMock.swift */,
+				FA37EEA624685319003B6519 /* DetailPostModuleInteractorMock.swift */,
+				FA37EEA82468536B003B6519 /* DetailPostModuleRouterMock.swift */,
+			);
+			path = Mock;
 			sourceTree = "<group>";
 		};
 		FA57B7B82462C2A900FD0913 /* Realm */ = {
@@ -353,8 +443,8 @@
 		FAFE6A30245ECE57006C7107 /* Router */ = {
 			isa = PBXGroup;
 			children = (
-				FA57B7D92462DA7000FD0913 /* PostModuleRouter.swift */,
-				FA57B7DB2462DA8400FD0913 /* PostModuleRouterInput.swift */,
+				FA57B7D92462DA7000FD0913 /* PostsModuleRouter.swift */,
+				FA57B7DB2462DA8400FD0913 /* PostsModuleRouterInput.swift */,
 			);
 			path = Router;
 			sourceTree = "<group>";
@@ -428,6 +518,24 @@
 			productReference = 7CBDFBEA24447FB600259A8B /* AnimationsTestTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		FA37EEB324685DCC003B6519 /* AnimationsTestUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FA37EEBD24685DCC003B6519 /* Build configuration list for PBXNativeTarget "AnimationsTestUITests" */;
+			buildPhases = (
+				FA37EEB024685DCC003B6519 /* Sources */,
+				FA37EEB124685DCC003B6519 /* Frameworks */,
+				FA37EEB224685DCC003B6519 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FA37EEBA24685DCC003B6519 /* PBXTargetDependency */,
+			);
+			name = AnimationsTestUITests;
+			productName = AnimationsTestUITests;
+			productReference = FA37EEB424685DCC003B6519 /* AnimationsTestUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -443,6 +551,10 @@
 					};
 					7CBDFBE924447FB600259A8B = {
 						CreatedOnToolsVersion = 11.4;
+						TestTargetID = 7CBDFBD324447FB500259A8B;
+					};
+					FA37EEB324685DCC003B6519 = {
+						CreatedOnToolsVersion = 11.4.1;
 						TestTargetID = 7CBDFBD324447FB500259A8B;
 					};
 				};
@@ -462,6 +574,7 @@
 			targets = (
 				7CBDFBD324447FB500259A8B /* AnimationsTest */,
 				7CBDFBE924447FB600259A8B /* AnimationsTestTests */,
+				FA37EEB324685DCC003B6519 /* AnimationsTestUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -479,6 +592,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		7CBDFBE824447FB600259A8B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA37EEB224685DCC003B6519 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -571,7 +691,7 @@
 				FA57B7C62462D16F00FD0913 /* DetailPostModuleViewController.swift in Sources */,
 				7CBDFBDA24447FB500259A8B /* SceneDelegate.swift in Sources */,
 				FAFE6A21245ECBB1006C7107 /* Constants.swift in Sources */,
-				FA57B7DC2462DA8400FD0913 /* PostModuleRouterInput.swift in Sources */,
+				FA57B7DC2462DA8400FD0913 /* PostsModuleRouterInput.swift in Sources */,
 				FAFE6A45245ED3C3006C7107 /* PostsModuleInteractorInput.swift in Sources */,
 				FAFE6A3D245ED139006C7107 /* Extensions.swift in Sources */,
 				FAFE6A47245ED3F5006C7107 /* PostsModuleInteractorOutput.swift in Sources */,
@@ -588,7 +708,7 @@
 				FAFE6A24245ECC06006C7107 /* Post.swift in Sources */,
 				FA57B7D62462D5B300FD0913 /* DetailPostModuleRouter.swift in Sources */,
 				FA57B7CC2462D1DB00FD0913 /* DetailPostModuleInteractor.swift in Sources */,
-				FA57B7DA2462DA7000FD0913 /* PostModuleRouter.swift in Sources */,
+				FA57B7DA2462DA7000FD0913 /* PostsModuleRouter.swift in Sources */,
 				FAFE6A36245ECEC2006C7107 /* PostsModuleViewOutput.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -597,7 +717,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA37EE9B24684C46003B6519 /* PostsModuleInteractorTests.swift in Sources */,
+				FA556EC82468404C0003FDD4 /* PostsModuleRouterMock.swift in Sources */,
+				FA37EE9F24684D3E003B6519 /* NetworkManagerMock.swift in Sources */,
+				FA37EEA724685319003B6519 /* DetailPostModuleInteractorMock.swift in Sources */,
+				FA556ECA246841CA0003FDD4 /* PostsModuleInteractorMock.swift in Sources */,
+				FA556ECC246844630003FDD4 /* PostsModuleViewMock.swift in Sources */,
+				FA556EC3246836300003FDD4 /* PostsModuleViewTests.swift in Sources */,
+				FA37EEAB246853C6003B6519 /* DetailPostModulePresenterTests.swift in Sources */,
+				FA37EEAD24685711003B6519 /* DetailPostModuleInteractorTests.swift in Sources */,
+				FA37EEA92468536B003B6519 /* DetailPostModuleRouterMock.swift in Sources */,
+				FA37EEA52468529A003B6519 /* DetailPostPresenterMock.swift in Sources */,
+				FA556EC524683C370003FDD4 /* PostsModulePresenterTests.swift in Sources */,
 				7CBDFBEF24447FB600259A8B /* AnimationsTestTests.swift in Sources */,
+				FA37EEAF246858D2003B6519 /* DetailPostModuleRouterTests.swift in Sources */,
+				FA556ECE246846F10003FDD4 /* PostsModulePresenterMock.swift in Sources */,
+				FA37EE9D24684CAE003B6519 /* DatabaseManagerMock.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA37EEB024685DCC003B6519 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA37EEB724685DCC003B6519 /* AnimationsTestUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -608,6 +751,11 @@
 			isa = PBXTargetDependency;
 			target = 7CBDFBD324447FB500259A8B /* AnimationsTest */;
 			targetProxy = 7CBDFBEB24447FB600259A8B /* PBXContainerItemProxy */;
+		};
+		FA37EEBA24685DCC003B6519 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7CBDFBD324447FB500259A8B /* AnimationsTest */;
+			targetProxy = FA37EEB924685DCC003B6519 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -825,6 +973,44 @@
 			};
 			name = Release;
 		};
+		FA37EEBB24685DCC003B6519 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = S437A2DXPB;
+				INFOPLIST_FILE = AnimationsTestUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = evgkzn.AnimationsTestUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = AnimationsTest;
+			};
+			name = Debug;
+		};
+		FA37EEBC24685DCC003B6519 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = S437A2DXPB;
+				INFOPLIST_FILE = AnimationsTestUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = evgkzn.AnimationsTestUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = AnimationsTest;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -851,6 +1037,15 @@
 			buildConfigurations = (
 				7CBDFBF724447FB600259A8B /* Debug */,
 				7CBDFBF824447FB600259A8B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FA37EEBD24685DCC003B6519 /* Build configuration list for PBXNativeTarget "AnimationsTestUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA37EEBB24685DCC003B6519 /* Debug */,
+				FA37EEBC24685DCC003B6519 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

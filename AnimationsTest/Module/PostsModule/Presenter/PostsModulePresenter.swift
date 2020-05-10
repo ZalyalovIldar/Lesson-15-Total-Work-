@@ -9,10 +9,10 @@
 import Foundation
 
 class PostsModulePresenter: PostsModuleViewOutput, PostsModuleInteractorOutput {
-
+    
     weak var view: PostsModuleViewInput!
     var interactor: PostsModuleInteractorInput!
-    var router: PostModuleRouterInput!
+    var router: PostsModuleRouterInput!
     
     func loadPosts() {
         interactor.loadPostsFromDatabase()

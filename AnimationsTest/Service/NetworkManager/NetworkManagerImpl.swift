@@ -14,7 +14,7 @@ class NetworkManagerImpl: NetworkManager {
         
         var posts: [Post] = []
         
-        guard let url = URL(string: "https://jsonplaceholder.typicode.com/posts")
+        guard let url = URL(string: Constants.postsUrl)
             else {
                 completion(posts)
                 return

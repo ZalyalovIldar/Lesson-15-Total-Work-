@@ -26,4 +26,6 @@ class Constants {
     static let deleteActionTitile = "Delete"
     
     static let saveButtonTitle = "Save"
+    
+    static let detailViewImageAccecibilityIdentifier = "DetailViewImage"
 }
