@@ -10,12 +10,15 @@ import Foundation
 
 protocol MainInteractorInput {
     func getHeroesInfo()
-    func deleteHero(at index: Int)
+    func delete(hero: HeroDTO)
+    func renameHero(by id: Int, with newName: String)
 }
 
 protocol MainInteractorOutput: class {
     func didFinishGettingHeroes(with heroes: [HeroDTO])
     func didFinishGettingHeroes(with error: Error)
+    func didFinishDeletingHero()
+    func didFinishRenamingHero()
 }
 
 class MainInteractor: MainInteractorInput {
@@ -25,6 +28,7 @@ class MainInteractor: MainInteractorInput {
     var networkManager: NetworkManagerProtocol!
     var dbManager: DBManagerProtocol!
     
+    /// Method to get info about heroes
     func getHeroesInfo() {
         
         dbManager.fetchAllHeroes { [weak self] heroes in
@@ -54,7 +58,23 @@ class MainInteractor: MainInteractorInput {
         }
     }
     
-    func deleteHero(at index: Int) {
-        dbManager.deleteHero(with: index)
+    /// Method to delete hero
+    /// - Parameter hero: hero which should be deleted
+    func delete(hero: HeroDTO) {
+        
+        dbManager.deleteHero(for: hero.id) {
+            self.output.didFinishDeletingHero()
+        }
+    }
+    
+    /// Method to rename hero
+    /// - Parameters:
+    ///   - id: hero id
+    ///   - newName: New name for hero
+    func renameHero(by id: Int, with newName: String) {
+        
+        dbManager.renameHero(for: id, with: newName) {
+            self.output.didFinishRenamingHero()
+        }
     }
 }

@@ -10,16 +10,20 @@ import UIKit
 
 protocol MainViewInput: class {
     
-    func setupInitialState()
     func reloadTable()
     func set(dataSource: UITableViewDataSource)
+    func didFinishedEditingHeroes()
+    func triggerHapticFeedback()
 }
 
 protocol MainViewOutput {
     
     func viewIsReady()
+    func loadHeroes()
     var navTitle: String { get }
     func didActivateDeleteAction(at indexPath: IndexPath)
+    func didActivateRenameAction(at indexPath: IndexPath)
+    func didLongPressedOnCell(at indexPath: IndexPath)
 }
 
 class MainViewController: UIViewController, MainViewInput {
@@ -32,15 +36,24 @@ class MainViewController: UIViewController, MainViewInput {
     /// Haptic touch generator
     private let generator = UIImpactFeedbackGenerator(style: .light)
     
+    /// Gesture recognizers for view
+    private lazy var longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(didLongPressAction(_:)))
+    
+    var coverView = UIVisualEffectView()
+    
     // MARK: Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = output.navTitle
-        
         output.viewIsReady()
+        initVeiws()
+    }
+    
+    private func initVeiws() {
+        
         initTableView()
         
+        title = output.navTitle
         view.backgroundColor = .white
         navigationController?.navigationBar.prefersLargeTitles = true
     }
@@ -51,6 +64,9 @@ class MainViewController: UIViewController, MainViewInput {
         tableView = UITableView()
         tableView.backgroundColor = .white
         
+        longPressGesture.minimumPressDuration = 0.4
+        tableView.addGestureRecognizer(longPressGesture)
+        
         tableView.delegate = self        
         tableView.register(cell: HeroCell.self)
         tableView.frame = view.frame
@@ -58,8 +74,10 @@ class MainViewController: UIViewController, MainViewInput {
     }
     
     /// Method for reload table after data got
-    func reloadTable() {
-        tableView.reloadData()
+    func reloadTable() {        
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
     
     /// Meethod to set data source to table
@@ -69,54 +87,51 @@ class MainViewController: UIViewController, MainViewInput {
     }
     
     // MARK: MainViewInput
-    func setupInitialState() {
+    func triggerHapticFeedback() {
+        generator.impactOccurred()
     }
+    
+    func didFinishedEditingHeroes() {
+        output.loadHeroes()
+    }
+    
+    @objc private func didLongPressAction(_ gesture: UILongPressGestureRecognizer) {
+        
+        guard gesture.state == .began else { return }
+        
+        let point = gesture.location(in: tableView)
+        guard let indexPath = tableView.indexPathForRow(at: point) else { return }
+        
+        output.didLongPressedOnCell(at: indexPath)
+    }
+    
 }
 
 extension MainViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         tableView.deselectRow(at: indexPath, animated: true)
+        
         generator.impactOccurred()
-        print("Selected")
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
-        let renameAction = UIContextualAction(style: .normal, title: "Rename") { [weak self] _, _, completion in
-            
+        let renameButton = UIContextualAction(style: .normal, title: Constants.renameButtonTitle) { [weak self] (_, _, completion) in
+            self?.output.didActivateRenameAction(at: indexPath)
             completion(true)
         }
         
-        renameAction.image = UIImage(systemName: Constants.renameButtonImageName)
-        
-        let deleteAction = UIContextualAction(style: .destructive, title: Constants.deleteButtonTitle) { [weak self] _, _, completion in
+        let deleteButton = UIContextualAction(style: .destructive, title: Constants.deleteButtonTitle) { [weak self] (_, _, completion) in
             
-            self?.output.didActivateDeleteAction(at: indexPath)         
-            
+            self?.output.didActivateDeleteAction(at: indexPath)
             completion(true)
         }
         
-        deleteAction.image = UIImage(systemName: Constants.deleteButtonImageName)
-        
-        let configuration = UISwipeActionsConfiguration(actions: [deleteAction, renameAction])
+        let configuration = UISwipeActionsConfiguration(actions: [deleteButton, renameButton])
         
         configuration.performsFirstActionWithFullSwipe = true        
         
         return configuration
-    }
-    
-    func tableView(_ tableView: UITableView, willPerformPreviewActionForMenuWith configuration: UIContextMenuConfiguration, animator: UIContextMenuInteractionCommitAnimating) {
-        animator.addCompletion {
-            self.show(DetailViewController(), sender: self)
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
-        let config = UIContextMenuConfiguration(identifier: "\(indexPath.row)" as NSCopying, previewProvider: { () -> UIViewController? in
-            return DetailViewController()
-        }, actionProvider: nil)
-        return config
     }
 }

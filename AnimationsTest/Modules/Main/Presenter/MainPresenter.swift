@@ -8,12 +8,8 @@
 
 import Foundation
 
-protocol MainModuleInput: class {
-    
-}
-
-class MainPresenter: MainModuleInput, MainViewOutput, MainInteractorOutput {
-    
+class MainPresenter: MainViewOutput, MainInteractorOutput, MainRouterOutput {
+            
     var navTitle: String {
         return "Heroes"
     }
@@ -29,11 +25,27 @@ class MainPresenter: MainModuleInput, MainViewOutput, MainInteractorOutput {
         interactor.getHeroesInfo()
     }
     
+    func loadHeroes() {
+        interactor.getHeroesInfo()
+    }
+    
     func didActivateDeleteAction(at indexPath: IndexPath) {
-        interactor.deleteHero(at: indexPath.row)
+        interactor.delete(hero: dataSource.heroes[indexPath.row])
+    }
+    
+    func didLongPressedOnCell(at indexPath: IndexPath) {
+        
+        let hero = dataSource.heroes[indexPath.row]
+        print(hero)
+        view.triggerHapticFeedback()
+    }
+    
+    func didActivateRenameAction(at indexPath: IndexPath) {
+        router.showHeroRenameAlert(with: dataSource.heroes[indexPath.row].name, for: indexPath)
     }
     
     //MARK: - MainInteractorOutput
+    
     func didFinishGettingHeroes(with heroes: [HeroDTO]) {
         
         view.set(dataSource: dataSource)
@@ -42,7 +54,21 @@ class MainPresenter: MainModuleInput, MainViewOutput, MainInteractorOutput {
     }
     
     func didFinishGettingHeroes(with error: Error) {
-        
+        print(error.localizedDescription)
+    }
+    
+    func didFinishDeletingHero() {
+        view.didFinishedEditingHeroes()
+    }
+    
+    func didFinishRenamingHero() {
+        view.didFinishedEditingHeroes()
+    }
+    
+    //MARK: - MainRouterOutput
+    
+    func didEnterNewHero(name: String, for indexPath: IndexPath) {
+        interactor.renameHero(by: dataSource.heroes[indexPath.row].id, with: name)
     }
     
 }

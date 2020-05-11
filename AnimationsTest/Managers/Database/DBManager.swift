@@ -9,10 +9,26 @@
 import RealmSwift
 
 protocol DBManagerProtocol {
-    func save(model hero: RealmHero)
+    
+    /// Method to save heroes array to database
+    /// - Parameter heroes: array of heroes to save
     func saveArray(of heroes: [Hero])
-    func renameHero(for key: Int, with newName: String)
-    func deleteHero(with key: Int)
+    
+    /// Method to rename hero
+    /// - Parameters:
+    ///   - key: hero id
+    ///   - newName: new hero name
+    ///   - completion:  completion which executes after hero renamed
+    func renameHero(for key: Int, with newName: String, completion: @escaping () -> Void)
+    
+    /// Method to delete hero from database
+    /// - Parameters:
+    ///   - key: user id
+    ///   - completion:  completion which executes after hero deleted
+    func deleteHero(for key: Int, completion: @escaping () -> Void)
+        
+    /// Method to get heroes from database
+    /// - Parameter completion: completion which executes after heroes fetched
     func fetchAllHeroes(completion: @escaping ([HeroDTO]) -> Void)
 }
 
@@ -20,34 +36,38 @@ class DBManager: DBManagerProtocol {
     
     private lazy var realm = try! Realm(configuration: .defaultConfiguration)
     
-    func save(model hero: RealmHero) {
-        
-    }
-    
     func saveArray(of heroes: [Hero]) {
         
         DispatchQueue.global(qos: .userInteractive).async { [weak self] in
             
             try? self?.realm.write {
-                self?.realm.add(heroes.map( {$0.convertToRealmModel()} ))
+                for index in 0 ... 19 {
+                    self?.realm.add(heroes[index].convertToRealmModel())
+                }
             }
         }
     }
     
-    func renameHero(for key: Int, with newName: String) {
+    func renameHero(for key: Int, with newName: String, completion: @escaping () -> Void) {
         
-    }
-    
-    func deleteHero(with key: Int) {
+        guard let objectToEdit = self.realm.object(ofType: RealmHero.self, forPrimaryKey: key) else { return }
         
-        DispatchQueue.global(qos: .userInteractive).async { [weak self] in
-                        
-            guard let objectToDelete = self?.realm.object(ofType: RealmHero.self, forPrimaryKey: key) else { return }
-            
-            try? self?.realm.write {
-                self?.realm.delete(objectToDelete)
-            }
+        try? realm.write {
+            objectToEdit.name = newName
+            realm.add(objectToEdit, update: .modified)
         }
+        completion()
+    }
+        
+    func deleteHero(for key: Int, completion: @escaping () -> Void) {
+        
+        guard let objectToDelete = self.realm.object(ofType: RealmHero.self, forPrimaryKey: key) else { return }
+        
+        try? self.realm.write {
+            self.realm.delete(objectToDelete)
+        }
+        completion()
+        
     }
     
     func fetchAllHeroes(completion: @escaping ([HeroDTO]) -> Void) {
@@ -65,5 +85,4 @@ class DBManager: DBManagerProtocol {
             }
         }
     }
-    
 }

@@ -38,6 +38,7 @@ class MainModuleConfigurator {
         presenter.dataSource = dataSource
         
         router.view = viewController
+        router.output = presenter
     }
 
 }

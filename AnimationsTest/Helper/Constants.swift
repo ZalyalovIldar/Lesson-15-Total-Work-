@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 class Constants {
     static let deleteButtonTitle = "Delete"
     static let deleteButtonImageName = "trash"
